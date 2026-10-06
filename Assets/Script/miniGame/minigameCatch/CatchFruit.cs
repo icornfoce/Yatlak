@@ -17,8 +17,8 @@ namespace MiniGame.Catch
         [Tooltip("ชนิดของผลไม้")]
         public FruitType fruitType = FruitType.Normal;
 
-        [Tooltip("ความเร็วในการตกลงมา")]
-        public float fallSpeed = 5f;
+        [Tooltip("ความเร็วในการตกลงมา (ปรับให้ช้าลงตามที่ต้องการ)")]
+        public float fallSpeed = 3f;
 
         [Tooltip("คะแนนที่ได้ (หรือโดนหักถ้าเป็นระเบิด)")]
         public int scorePoints = 100;

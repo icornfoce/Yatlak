@@ -72,6 +72,12 @@ namespace MiniGame.Catch
 
         private void OnGameOver(string winnerMessage)
         {
+            // ซ่อน Combo เมื่อจบการแข่งขัน
+            if (comboTMP != null)
+            {
+                comboTMP.text = "";
+            }
+
             if (resultTextTMP == null) return;
 
             if (isMatchManagerUI)

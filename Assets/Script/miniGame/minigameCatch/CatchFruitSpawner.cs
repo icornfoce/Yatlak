@@ -26,14 +26,30 @@ namespace MiniGame.Catch
         public List<GameObject> fruitPrefabs = new List<GameObject>();
 
         [Header("Spawn Timing & Area")]
-        [Tooltip("ความถี่ในการเกิดผลไม้ (วินาทีต่อ 1 ผล)")]
-        public float spawnInterval = 0.7f;
+        [Tooltip("ความถี่ตอนเริ่มเกม")]
+        public float startSpawnInterval = 0.85f;
+
+        [Tooltip("ความถี่ตอนท้ายเกมใกล้หมดเวลา")]
+        public float endSpawnInterval = 0.55f;
 
         [Tooltip("ระดับความสูงแกน Y ที่ปล่อยผลไม้ลงมา")]
         public float spawnY = 6f;
 
-        [Tooltip("ระยะกระจาย X สุ่มซ้าย-ขวา จากจุดกึ่งกลาง (เช่น 3.5 หน่วย)")]
+        [Tooltip("ระยะกระจาย X สุ่มซ้าย-ขวา จากจุดกึ่งกลาง")]
         public float spawnRangeX = 3.5f;
+
+        [Header("Linear Fall Speed")]
+        [Tooltip("ความเร็วตกตอนเริ่มเกม (ช้า ควบคุมง่าย)")]
+        public float startFallSpeed = 2.5f;
+
+        [Tooltip("ความเร็วตกตอนท้ายเกมใกล้หมดเวลา (เร็ว ท้าทาย)")]
+        public float endFallSpeed = 5.0f;
+
+        [Tooltip("สุ่มความเร็วแกว่งเล็กน้อย (+/-) สลับช้า-เร็ว เพื่อความสนุก")]
+        public bool randomizeSpeed = true;
+
+        [Tooltip("ระยะแกว่งความเร็วแบบสุ่ม เช่น 0.3")]
+        public float speedVariance = 0.3f;
 
         [Header("Player Screen Offsets")]
         [Tooltip("จุดศูนย์กลาง X ของ P1 (ปกติ = 0)")]
@@ -76,7 +92,16 @@ namespace MiniGame.Catch
         {
             while (true)
             {
-                yield return new WaitForSeconds(spawnInterval);
+                // คำนวณความคืบหน้าของเกม (0.0 = เริ่มเกม, 1.0 = ท้ายเกมใกล้หมดเวลา)
+                float progress = 0f;
+                if (CatchGameManager.Instance != null && CatchGameManager.Instance.matchDuration > 0f)
+                {
+                    progress = Mathf.Clamp01(1f - (CatchGameManager.Instance.RemainingTime / CatchGameManager.Instance.matchDuration));
+                }
+
+                // คำนวณช่วงเวลาปล่อยผลไม้แบบ Linear (ค่อยๆ ถี่ขึ้นตามเวลา)
+                float currentInterval = Mathf.Lerp(startSpawnInterval, endSpawnInterval, progress);
+                yield return new WaitForSeconds(currentInterval);
 
                 // ตรวจสอบว่าเกมกำลังเล่นอยู่หรือไม่ ถ้าหมดเวลาแล้วจะไม่ปล่อยผลไม้เพิ่ม
                 if (CatchGameManager.Instance != null && !CatchGameManager.Instance.IsPlaying)
@@ -90,16 +115,23 @@ namespace MiniGame.Catch
                 // สุ่มตำแหน่ง X ภายในเลน (-spawnRangeX ถึง +spawnRangeX)
                 float localX = Random.Range(-spawnRangeX, spawnRangeX);
 
+                // คำนวณความเร็วตกแบบ Linear (เริ่มจาก startFallSpeed แล้วค่อยๆ เร่งขึ้นไปถึง endFallSpeed)
+                float speed = Mathf.Lerp(startFallSpeed, endFallSpeed, progress);
+                if (randomizeSpeed)
+                {
+                    speed += Random.Range(-speedVariance, speedVariance);
+                }
+
                 if (spawnerMode == SpawnerMode.SynchronizedBothPlayers)
                 {
-                    // สปอว์นให้ทั้ง P1 และ P2 ในตำแหน่งและชนิดเดียวกันเป๊ะ
-                    SpawnFruitAt(prefabToSpawn, p1CenterX + localX, spawnY, PlayerID.Player1);
-                    SpawnFruitAt(prefabToSpawn, p2CenterX + localX, spawnY, PlayerID.Player2);
+                    // สปอว์นให้ทั้ง P1 และ P2 ในตำแหน่ง, ชนิด, และความเร็วเดียวกันเป๊ะ
+                    SpawnFruitAt(prefabToSpawn, p1CenterX + localX, spawnY, PlayerID.Player1, speed);
+                    SpawnFruitAt(prefabToSpawn, p2CenterX + localX, spawnY, PlayerID.Player2, speed);
                 }
                 else
                 {
                     float centerX = (targetPlayer == PlayerID.Player1) ? p1CenterX : p2CenterX;
-                    SpawnFruitAt(prefabToSpawn, centerX + localX, spawnY, targetPlayer);
+                    SpawnFruitAt(prefabToSpawn, centerX + localX, spawnY, targetPlayer, speed);
                 }
             }
         }
@@ -115,16 +147,17 @@ namespace MiniGame.Catch
             return fruitPrefabs[index];
         }
 
-        private void SpawnFruitAt(GameObject prefab, float x, float y, PlayerID player)
+        private void SpawnFruitAt(GameObject prefab, float x, float y, PlayerID player, float speed)
         {
             Vector3 spawnPos = new Vector3(x, y, 0);
             GameObject fruitObj = Instantiate(prefab, spawnPos, Quaternion.identity);
 
-            // กำหนดเป้าหมายผู้เล่นให้กับผลไม้
+            // กำหนดเป้าหมายผู้เล่นและความเร็วให้กับผลไม้
             CatchFruit fruit = fruitObj.GetComponent<CatchFruit>();
             if (fruit != null)
             {
                 fruit.targetPlayer = player;
+                fruit.fallSpeed = speed;
             }
         }
 
