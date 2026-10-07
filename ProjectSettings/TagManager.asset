@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - wall
+  - wall-R
+  - wall-L
+  - cup
   layers:
   - Default
   - TransparentFX
