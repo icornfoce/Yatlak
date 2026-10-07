@@ -16,6 +16,9 @@ public class randomMinigame : MonoBehaviour
     private bool hasTriggered50 = false;
     private bool hasTriggered75 = false;
 
+    [SerializeField] 
+    private GameObject mainMinigame;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,16 +34,19 @@ public class randomMinigame : MonoBehaviour
         if (!hasTriggered25 && (p1 >= 25 || p2 >= 25))
         {
             RandomMinigame();
+            mainMinigame.SetActive(false);
             hasTriggered25 = true;
         }
         else if (!hasTriggered50 && (p1 >= 50 || p2 >= 50))
         {
             RandomMinigame();
+            mainMinigame.SetActive(false);
             hasTriggered50 = true;
         }
         else if (!hasTriggered75 && (p1 >= 75 || p2 >= 75))
         {
             RandomMinigame();
+            mainMinigame.SetActive(false);
             hasTriggered75 = true;
         }
     }
