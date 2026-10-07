@@ -6,44 +6,28 @@ using TMPro;
 
 namespace MiniGame.MainMinigame
 {
-    /// <summary>
-    /// แสดงผล UI มินิเกมแข่งกดปุ่มตามลำดับ (QTE Sequence):
-    /// - แสดงลำดับปุ่ม (P1 เป็น WASD, P2 เป็นลูกศร ↑ ↓ ← →)
-    /// - ไฮไลต์สีเขียวตัวที่กดถูกต้องแล้ว และกะพริบสีแดงเมื่อกดผิด
-    /// - หลอด Progress Bar แบบ RawImage ปรับความสูงค่อยๆ เพิ่มขึ้นเทียบกับ BG Bar
-    /// - ข้อความผลแพ้ชนะ (WIN / LOSE)
-    /// </summary>
     public class SequenceUI : MonoBehaviour
     {
-        [Header("Target Player")]
+        [Header("Player Settings")]
         public Catch.PlayerID playerID = Catch.PlayerID.Player1;
         public SequencePlayerController playerController;
 
-        [Header("Sequence Display (TextMeshPro)")]
-        [Tooltip("Text แสดงลำดับปุ่ม (เช่น W A S D หรือ ↑ ← ↓ →)")]
+        [Header("Sequence Display")]
         public TextMeshProUGUI sequenceTextTMP;
 
-        [Header("Progress Bar Display (RawImage Vertical Bar)")]
-        [Tooltip("RawImage ของหลอดที่จะขยายความสูงขึ้นมา")]
+        [Header("Progress Bar")]
         public RawImage fillRawImage;
-
-        [Tooltip("RectTransform พื้นหลังของหลอด Bar (ใช้เพื่อเทียบความสูงสูงสุด 100%)")]
         public RectTransform bgBarRect;
-
-        [Tooltip("ความเร็วในการค่อยๆ ขยับความสูงขึ้นแบบ Smooth")]
         public float smoothSpeed = 6f;
-
-        [Tooltip("Text แสดงตัวเลขเปอร์เซ็นต์ (เช่น 25%)")]
         public TextMeshProUGUI progressPercentTMP;
 
         [Header("Result Display")]
-        [Tooltip("Text แสดงผลแพ้ชนะตอนจบเกม (WIN / LOSE)")]
         public TextMeshProUGUI resultTextTMP;
 
-        [Header("Colors (สีไฮไลต์)")]
+        [Header("Colors")]
         public Color normalColor = Color.white;
-        public Color passedColor = new Color(0.3f, 1f, 0.4f); // สีเขียวสว่างสำหรับตัวที่กดผ่านแล้ว
-        public Color wrongColor = new Color(1f, 0.3f, 0.3f);   // สีแดงเวลากดผิด
+        public Color passedColor = new Color(0.3f, 1f, 0.4f);
+        public Color wrongColor = new Color(1f, 0.3f, 0.3f);
 
         private Coroutine flashRoutine;
         private float currentHeight = 0f;
@@ -51,7 +35,6 @@ namespace MiniGame.MainMinigame
 
         private void Start()
         {
-            // ค้นหา PlayerController ที่มี PlayerID ตรงกับ UI นี้โดยเฉพาะ
             if (playerController == null)
             {
                 SequencePlayerController[] controllers = FindObjectsByType<SequencePlayerController>(FindObjectsSortMode.None);
@@ -70,7 +53,6 @@ namespace MiniGame.MainMinigame
                 playerController.OnSequenceUpdated.AddListener(OnSequenceUpdated);
                 playerController.OnWrongKey.AddListener(OnWrongKey);
 
-                // ดึงโจทย์ชุดปัจจุบันมาแสดงผลบน UI ทันที
                 if (playerController.currentSequence != null && playerController.currentSequence.Count > 0)
                 {
                     OnSequenceUpdated(playerController.currentSequence, playerController.currentIndex);
@@ -83,7 +65,6 @@ namespace MiniGame.MainMinigame
                 SequenceGameManager.Instance.OnGameOver.AddListener(OnGameOver);
             }
 
-            // ตั้งค่า Pivot ของ RawImage ให้อยู่ด้านล่าง เพื่อให้ขยายความสูงขึ้นด้านบน
             if (fillRawImage != null)
             {
                 RectTransform rt = fillRawImage.rectTransform;
@@ -94,7 +75,6 @@ namespace MiniGame.MainMinigame
             currentHeight = 0f;
             targetPercent = 0f;
 
-            // ซ่อนข้อความผลการแข่งขันตอนเริ่มเกม
             if (resultTextTMP != null)
             {
                 resultTextTMP.text = "";
@@ -126,30 +106,22 @@ namespace MiniGame.MainMinigame
             SmoothUpdateBar();
         }
 
-        /// <summary>
-        /// ค่อยๆ เพิ่มความสูงของ RawImage ให้สูงขึ้นตามสัดส่วนความสูงของ BG Bar แบบ Smooth
-        /// </summary>
         private void SmoothUpdateBar()
         {
             if (fillRawImage == null) return;
 
-            // คำนวณความสูงเป้าหมายเทียบกับ BG Bar
             float maxHeight = (bgBarRect != null) ? bgBarRect.rect.height : 100f;
             float targetHeight = maxHeight * Mathf.Clamp01(targetPercent / 100f);
 
-            // ค่อยๆ Lerp ความสูงปัจจุบันเข้าหาเป้าหมาย
             currentHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * smoothSpeed);
 
-            // เมื่อเข้าใกล้เป้าหมายมากๆ ให้ปัดเท่ากัน
             if (Mathf.Abs(targetHeight - currentHeight) < 0.2f)
             {
                 currentHeight = targetHeight;
             }
 
-            // กำหนดความสูงให้กับ RawImage
             fillRawImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, currentHeight);
 
-            // อัปเดตตัวเลข % บนหน้าจอ
             if (progressPercentTMP != null && maxHeight > 0f)
             {
                 float currentPercent = (currentHeight / maxHeight) * 100f;
@@ -157,9 +129,6 @@ namespace MiniGame.MainMinigame
             }
         }
 
-        /// <summary>
-        /// อัปเดตข้อความลำดับปุ่ม และไฮไลต์ตัวที่กดผ่านแล้วเป็นสีเขียว
-        /// </summary>
         private void OnSequenceUpdated(List<DirectionKey> sequence, int currentIndex)
         {
             if (sequenceTextTMP == null || sequence == null) return;
@@ -184,7 +153,6 @@ namespace MiniGame.MainMinigame
         {
             if (playerID == Catch.PlayerID.Player1)
             {
-                // P1: แสดง W A S D
                 switch (dir)
                 {
                     case DirectionKey.Up: return "W";
@@ -195,7 +163,6 @@ namespace MiniGame.MainMinigame
             }
             else
             {
-                // P2: แสดงลูกศร
                 switch (dir)
                 {
                     case DirectionKey.Up: return "↑";
@@ -207,9 +174,6 @@ namespace MiniGame.MainMinigame
             return "?";
         }
 
-        /// <summary>
-        /// เมื่อกดผิด กะพริบสีแดงเตือนผู้เล่น
-        /// </summary>
         private void OnWrongKey()
         {
             if (flashRoutine != null)
@@ -230,17 +194,11 @@ namespace MiniGame.MainMinigame
             }
         }
 
-        /// <summary>
-        /// รับค่าความคืบหน้าจาก GameManager
-        /// </summary>
         private void OnProgressUpdated(float p1Prog, float p2Prog)
         {
             targetPercent = (playerID == Catch.PlayerID.Player1) ? p1Prog : p2Prog;
         }
 
-        /// <summary>
-        /// เมื่อมีคนถึง 100% ประกาศผล WIN / LOSE
-        /// </summary>
         private void OnGameOver(string winnerMessage)
         {
             if (resultTextTMP == null || SequenceGameManager.Instance == null) return;

@@ -4,13 +4,9 @@ using UnityEngine.Events;
 
 namespace MiniGame.MainMinigame
 {
-    /// <summary>
-    /// ตัวควบคุมการกดปุ่มของผู้เล่นแต่ละคน (P1 ใช้ WASD, P2 ใช้ลูกศร)
-    /// ตรวจสอบการกดตามลำดับ: ถ้ากดถูกตัวถัดไป ถ้ากดผิดล้างชุดเริ่มใหม่จากตัวแรก
-    /// </summary>
     public class SequencePlayerController : MonoBehaviour
     {
-        [Header("Player Target")]
+        [Header("Player Settings")]
         public Catch.PlayerID playerID = Catch.PlayerID.Player1;
 
         [Header("State")]
@@ -18,15 +14,15 @@ namespace MiniGame.MainMinigame
         public int currentIndex = 0;
         public int completedSequenceCount = 0;
 
-        [Header("Audio (ทางเลือก)")]
+        [Header("Audio")]
         public AudioClip correctSound;
         public AudioClip completeSequenceSound;
         public AudioClip wrongSound;
 
         [Header("Events")]
-        public UnityEvent<List<DirectionKey>, int> OnSequenceUpdated; // currentSequence, currentIndex
-        public UnityEvent OnWrongKey;                                 // เมื่อกดผิด
-        public UnityEvent OnSequenceCompleted;                        // เมื่อกดครบชุด
+        public UnityEvent<List<DirectionKey>, int> OnSequenceUpdated;
+        public UnityEvent OnWrongKey;
+        public UnityEvent OnSequenceCompleted;
 
         private void Start()
         {
@@ -60,16 +56,13 @@ namespace MiniGame.MainMinigame
             DirectionKey? pressedDir = GetPressedDirection();
             if (!pressedDir.HasValue) return;
 
-            // ตรวจสอบว่าปุ่มที่กดตรงกับตำแหน่งปัจจุบันหรือไม่
             DirectionKey expectedDir = currentSequence[currentIndex];
 
             if (pressedDir.Value == expectedDir)
             {
-                // กดถูกต้อง!
                 currentIndex++;
                 PlaySound(correctSound);
 
-                // ถ้ากดครบทั้งชุด (3-6 ตัว)
                 if (currentIndex >= currentSequence.Count)
                 {
                     PlaySound(completeSequenceSound);
@@ -80,7 +73,6 @@ namespace MiniGame.MainMinigame
                         SequenceGameManager.Instance.RegisterSequenceCompleted(playerID, currentSequence.Count);
                     }
 
-                    // ข้ามไปยังโจทย์ชุดถัดไป
                     completedSequenceCount++;
                     LoadNewSequence();
                 }
@@ -91,7 +83,6 @@ namespace MiniGame.MainMinigame
             }
             else
             {
-                // กดผิดปุ่ม! -> ล้างชุดนั้นทันที ต้องเริ่มกดตั้งแต่ตัวแรกใหม่
                 PlaySound(wrongSound);
                 currentIndex = 0;
                 OnWrongKey?.Invoke();
@@ -103,7 +94,6 @@ namespace MiniGame.MainMinigame
         {
             if (playerID == Catch.PlayerID.Player1)
             {
-                // P1: ใช้ W A S D
                 if (Input.GetKeyDown(KeyCode.W)) return DirectionKey.Up;
                 if (Input.GetKeyDown(KeyCode.S)) return DirectionKey.Down;
                 if (Input.GetKeyDown(KeyCode.A)) return DirectionKey.Left;
@@ -111,7 +101,6 @@ namespace MiniGame.MainMinigame
             }
             else
             {
-                // P2: ใช้ลูกศร (Arrow Keys)
                 if (Input.GetKeyDown(KeyCode.UpArrow)) return DirectionKey.Up;
                 if (Input.GetKeyDown(KeyCode.DownArrow)) return DirectionKey.Down;
                 if (Input.GetKeyDown(KeyCode.LeftArrow)) return DirectionKey.Left;
