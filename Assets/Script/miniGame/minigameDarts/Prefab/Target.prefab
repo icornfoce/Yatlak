@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2051299589242615991}
   - component: {fileID: 3726140079034700642}
-  - component: {fileID: 6022434518478931660}
   m_Layer: 6
   m_Name: Target
   m_TagString: Untagged
@@ -92,24 +91,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6022434518478931660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8984652174988754048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7588db30111b243a663d75a6b509fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsTarget
-  centerPoint: {fileID: 2051299589242615991}
-  bullseyeRadius: 0.35
-  innerRadius: 0.9
-  middleRadius: 1.6
-  outerRadius: 2.4
-  bullseyePoints: 100
-  innerPoints: 60
-  middlePoints: 40
-  outerPoints: 20

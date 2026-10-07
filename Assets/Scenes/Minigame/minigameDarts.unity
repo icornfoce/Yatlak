@@ -668,23 +668,29 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef81efdc571ed10448efe3c0cef1e0a2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsPlayerController
-  playerID: 1
-  target: {fileID: 635089694}
+  m_EditorClassIdentifier: Assembly-CSharp::DartsPlayer
+  playerNumber: 2
+  throwKey: 274
+  keyText: "[\u2193]"
+  manager: {fileID: 974474942}
+  target: {fileID: 635089693}
+  crosshair: {fileID: 1378848489}
+  dartPrefab: {fileID: 4818135346380083360, guid: 7de6f9a8cc2df8648a6a8082bdcf24a1, type: 3}
+  statusText: {fileID: 544186712}
   aimRangeX: 2.5
   aimRangeY: 2.5
   aimSpeedX: 2.2
   aimSpeedY: 2.5
-  aimCrosshair: {fileID: 190039790}
-  pinnedDartPrefab: {fileID: 4818135346380083360, guid: 7de6f9a8cc2df8648a6a8082bdcf24a1, type: 3}
+  bullseyeRadius: 0.35
+  innerRadius: 0.9
+  middleRadius: 1.6
+  outerRadius: 2.4
+  bullseyePoints: 100
+  innerPoints: 60
+  middlePoints: 40
+  outerPoints: 20
   lockSound: {fileID: 0}
   hitSound: {fileID: 0}
-  OnAimStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDartHit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &328565905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,17 +1022,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665c49016676f5045b590d3f7317a8f2, type: 3}
---- !u!114 &635089694 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6022434518478931660, guid: 665c49016676f5045b590d3f7317a8f2, type: 3}
+--- !u!4 &635089693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2051299589242615991, guid: 665c49016676f5045b590d3f7317a8f2, type: 3}
   m_PrefabInstance: {fileID: 635089692}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7588db30111b243a663d75a6b509fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsTarget
 --- !u!1 &701620361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,28 +1446,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 974474938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a73b4bed150eb8449982cd9569db97bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b9f5de7053ea3246b959f847f0cd5be, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsGameManager
-  maxDartsPerPlayer: 3
-  matchDuration: 60
-  player1:
-    score: 0
-    dartsLeft: 3
-    lastThrowScore: 0
-  player2:
-    score: 0
-    dartsLeft: 3
-    lastThrowScore: 0
-  OnScoreUpdated:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTimerUpdated:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGameOver:
-    m_PersistentCalls:
-      m_Calls: []
+  m_EditorClassIdentifier: Assembly-CSharp::DartsManager
+  maxDarts: 3
+  gameTime: 60
+  scoreTextP1: {fileID: 2015180620}
+  dartsTextP1: {fileID: 727387782}
+  resultTextP1: {fileID: 808274672}
+  scoreTextP2: {fileID: 2054663564}
+  dartsTextP2: {fileID: 63175872}
+  resultTextP2: {fileID: 1295269221}
+  timerText: {fileID: 328565907}
+  p1Score: 0
+  p2Score: 0
+  p1DartsLeft: 3
+  p2DartsLeft: 3
+  timeLeft: 60
+  isPlaying: 0
 --- !u!1 &1069668037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,23 +1750,29 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef81efdc571ed10448efe3c0cef1e0a2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsPlayerController
-  playerID: 0
-  target: {fileID: 643901660694246170}
+  m_EditorClassIdentifier: Assembly-CSharp::DartsPlayer
+  playerNumber: 1
+  throwKey: 115
+  keyText: '[S]'
+  manager: {fileID: 974474942}
+  target: {fileID: 643901660694246171}
+  crosshair: {fileID: 101646847}
+  dartPrefab: {fileID: 4818135346380083360, guid: 7de6f9a8cc2df8648a6a8082bdcf24a1, type: 3}
+  statusText: {fileID: 1069668039}
   aimRangeX: 2.5
   aimRangeY: 2.5
   aimSpeedX: 2.2
   aimSpeedY: 2.5
-  aimCrosshair: {fileID: 1094628873}
-  pinnedDartPrefab: {fileID: 4818135346380083360, guid: 7de6f9a8cc2df8648a6a8082bdcf24a1, type: 3}
+  bullseyeRadius: 0.35
+  innerRadius: 0.9
+  middleRadius: 1.6
+  outerRadius: 2.4
+  bullseyePoints: 100
+  innerPoints: 60
+  middlePoints: 40
+  outerPoints: 20
   lockSound: {fileID: 0}
   hitSound: {fileID: 0}
-  OnAimStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDartHit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1295269219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1921,6 @@ GameObject:
   - component: {fileID: 1374919682}
   - component: {fileID: 1374919685}
   - component: {fileID: 1374919684}
-  - component: {fileID: 1374919686}
   m_Layer: 5
   m_Name: UI_player1
   m_TagString: Untagged
@@ -1989,25 +1990,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374919681}
   m_CullTransparentMesh: 1
---- !u!114 &1374919686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374919681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2665db79a35bf47a1277c85ea92ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsUI
-  targetPlayer: 0
-  playerController: {fileID: 0}
-  scoreTMP: {fileID: 2015180620}
-  dartsLeftTMP: {fileID: 727387782}
-  statusTMP: {fileID: 1069668039}
-  resultTextTMP: {fileID: 808274672}
-  timerTMP: {fileID: 0}
 --- !u!1 &1378848488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2145,6 @@ GameObject:
   - component: {fileID: 1553902396}
   - component: {fileID: 1553902399}
   - component: {fileID: 1553902398}
-  - component: {fileID: 1553902400}
   m_Layer: 5
   m_Name: UI_player2
   m_TagString: Untagged
@@ -2233,25 +2214,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553902395}
   m_CullTransparentMesh: 1
---- !u!114 &1553902400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553902395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2665db79a35bf47a1277c85ea92ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsUI
-  targetPlayer: 1
-  playerController: {fileID: 0}
-  scoreTMP: {fileID: 2054663564}
-  dartsLeftTMP: {fileID: 63175872}
-  statusTMP: {fileID: 544186712}
-  resultTextTMP: {fileID: 1295269221}
-  timerTMP: {fileID: 0}
 --- !u!1 &1916440249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2225,6 @@ GameObject:
   - component: {fileID: 1916440250}
   - component: {fileID: 1916440253}
   - component: {fileID: 1916440252}
-  - component: {fileID: 1916440254}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -2330,25 +2291,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916440249}
   m_CullTransparentMesh: 1
---- !u!114 &1916440254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916440249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2665db79a35bf47a1277c85ea92ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsUI
-  targetPlayer: 0
-  playerController: {fileID: 0}
-  scoreTMP: {fileID: 0}
-  dartsLeftTMP: {fileID: 0}
-  statusTMP: {fileID: 0}
-  resultTextTMP: {fileID: 0}
-  timerTMP: {fileID: 328565907}
 --- !u!1 &1917076760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,17 +2701,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665c49016676f5045b590d3f7317a8f2, type: 3}
---- !u!114 &643901660694246170 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6022434518478931660, guid: 665c49016676f5045b590d3f7317a8f2, type: 3}
+--- !u!4 &643901660694246171 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2051299589242615991, guid: 665c49016676f5045b590d3f7317a8f2, type: 3}
   m_PrefabInstance: {fileID: 643901660694246169}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7588db30111b243a663d75a6b509fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGame.Darts.DartsTarget
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
