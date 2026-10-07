@@ -246,6 +246,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &521455018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6793065367384075675, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}
+  m_PrefabInstance: {fileID: 975687127794859764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &851807221 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9125425851045371534, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}
@@ -308,6 +313,7 @@ MonoBehaviour:
   doesMinigame: 
   p1Slider: {fileID: 1007176513}
   p2Slider: {fileID: 851807221}
+  mainMinigame: {fileID: 521455018}
 --- !u!114 &1007176513 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 117932769520291952, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}
@@ -458,14 +464,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 74573817408961334, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3950109696696119029, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3952545062993402001, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6793065367384075675, guid: 3a75225c7ad1e1e4cbd63e3c60f9f429, type: 3}

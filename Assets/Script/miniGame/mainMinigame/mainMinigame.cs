@@ -72,66 +72,66 @@ public class mainMinigame : MonoBehaviour
     {
         if (p1Index >= p1TargetKeys.Count) return;
 
-            DirectionKey current = p1TargetKeys[p1Index];
+        DirectionKey current = p1TargetKeys[p1Index];
 
-            bool pressedW = Input.GetKeyDown(KeyCode.W);
-            bool pressedS = Input.GetKeyDown(KeyCode.S);
-            bool pressedA = Input.GetKeyDown(KeyCode.A);
-            bool pressedD = Input.GetKeyDown(KeyCode.D);
+        bool pressedW = Input.GetKeyDown(KeyCode.W);
+        bool pressedS = Input.GetKeyDown(KeyCode.S);
+        bool pressedA = Input.GetKeyDown(KeyCode.A);
+        bool pressedD = Input.GetKeyDown(KeyCode.D);
 
-            if (pressedW || pressedS || pressedA || pressedD)
+        if (pressedW || pressedS || pressedA || pressedD)
+        {
+            bool isCorrect = (pressedW && current == DirectionKey.Up) ||
+                             (pressedS && current == DirectionKey.Down) ||
+                             (pressedA && current == DirectionKey.Left) ||
+                             (pressedD && current == DirectionKey.Right);
+
+            if (isCorrect)
             {
-                bool isCorrect = (pressedW && current == DirectionKey.Up) ||
-                                (pressedS && current == DirectionKey.Down) ||
-                                (pressedA && current == DirectionKey.Left) ||
-                                (pressedD && current == DirectionKey.Right);
-
-                if (isCorrect)
+                p1Index++;
+                if (p1Index >= p1TargetKeys.Count)
                 {
-                    p1Index++;
-                    if (p1Index >= p1TargetKeys.Count)
-                    {
-                        addScore(1);
-                    }
-                }
-                else
-                {
-                    p1Index = 0; 
+                    addScore(1);
                 }
             }
+            else
+           {
+                p1Index = 0; 
+            }
+        }
     }
 
     void player2Key()
     {
-        if (p2Index >= p2TargetKeys.Count) return;
+    if (p2Index >= p2TargetKeys.Count) return;
 
-            DirectionKey current = p2TargetKeys[p2Index];
+        DirectionKey current = p2TargetKeys[p2Index];
 
-            bool pressedUp = Input.GetKeyDown(KeyCode.UpArrow);
-            bool pressedDown = Input.GetKeyDown(KeyCode.DownArrow);
-            bool pressedLeft = Input.GetKeyDown(KeyCode.LeftArrow);
-            bool pressedRight = Input.GetKeyDown(KeyCode.RightArrow);
+        bool pressedUp = Input.GetKeyDown(KeyCode.UpArrow);
+        bool pressedDown = Input.GetKeyDown(KeyCode.DownArrow);
+        bool pressedLeft = Input.GetKeyDown(KeyCode.LeftArrow);
+        bool pressedRight = Input.GetKeyDown(KeyCode.RightArrow);
 
-            if (pressedUp || pressedDown || pressedLeft || pressedRight)
+        if (pressedUp || pressedDown || pressedLeft || pressedRight)
+        {
+            bool isCorrect = (pressedUp && current == DirectionKey.Up) ||
+                             (pressedDown && current == DirectionKey.Down) ||
+                             (pressedLeft && current == DirectionKey.Left) ||
+                             (pressedRight && current == DirectionKey.Right);
+
+            if (isCorrect)
             {
-                bool isCorrect = (pressedUp && current == DirectionKey.Up) ||
-                                (pressedDown && current == DirectionKey.Down) ||
-                                (pressedLeft && current == DirectionKey.Left) ||
-                                (pressedRight && current == DirectionKey.Right);
-
-                if (isCorrect)
+                p2Index++;
+                if (p2Index >= p2TargetKeys.Count)
                 {
-                    p2Index++;
-                    if (p2Index >= p2TargetKeys.Count)
-                    {
-                        addScore(2);
-                    }
-                }
-                else
-                {
-                    p2Index = 0; 
+                    addScore(2);
                 }
             }
+            else
+            {
+                p2Index = 0; 
+            }
+        }
     }
 
     void addScore(int player)
@@ -219,14 +219,14 @@ public class mainMinigame : MonoBehaviour
 
     void checkWin()
     {
-        if (p1Slider != null && p1Slider.value >= 100f)
+        if (p1Slider.value >= 100f)
         {
             p1ResultText.gameObject.SetActive(true);
             isGameOver = true;
             if (p1ResultText != null) p1ResultText.text = "WIN";
             if (p2ResultText != null) p2ResultText.text = "LOSE";
         }
-        else if (p2Slider != null && p2Slider.value >= 100f)
+        else if (p2Slider.value >= 100f)
         {
             p2ResultText.gameObject.SetActive(true);
             isGameOver = true;
