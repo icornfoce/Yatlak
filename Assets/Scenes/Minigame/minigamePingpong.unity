@@ -211,12 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &11619659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -385,84 +379,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96300811}
   m_CullTransparentMesh: 1
---- !u!1 &100957011
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 100957014}
-  - component: {fileID: 100957013}
-  - component: {fileID: 100957012}
-  m_Layer: 0
-  m_Name: Player con 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &100957012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100957011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0ee389c144be647936a359aa96294c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PlayerPingPongController
-  playerName: Player 1
-  inputKey: 115
-  totalBalls: 5
-  slideSpeed: 2.5
-  slideHalfWidth: 1.3
-  ballSpawnPoint: {fileID: 1865450197}
-  aimSweepSpeed: 120
-  aimIndicator: {fileID: 100957013}
-  powerOscillateSpeed: 1.8
-  minLaunchSpeed: 6.5
-  maxLaunchSpeed: 12.5
-  launchPitchAngle: -20
-  ballPrefab: {fileID: 6367235978949624388, guid: d2e84dc2c4f91264797329fe3e76bd1a, type: 3}
-  tableTransform: {fileID: 1291126923}
-  playerUI: {fileID: 140986356}
---- !u!114 &100957013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100957011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08257e7b84f45dd4e91d8e24f68db5b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.AimIndicator
-  lineRenderer: {fileID: 0}
-  length: 3.5
-  startWidth: 0.08
-  endWidth: 0.02
-  indicatorColor: {r: 1, g: 0.9, b: 0.1, a: 0.9}
-  arrowTip: {fileID: 0}
---- !u!4 &100957014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100957011}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69818, y: 1.15615, z: -5.98092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &104077202
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,12 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 104077204}
 --- !u!23 &104077207
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -647,42 +557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ea5e1cc0029a143bb2c945282beda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongPlayerUI
-  playerNameText: {fileID: 0}
-  scoreText: {fileID: 751386843}
-  remainingBallsText: {fileID: 514053155}
-  statePromptText: {fileID: 2136317152}
-  powerFillImage: {fileID: 96300813}
-  powerSlider: {fileID: 1670652133}
-  powerGradient:
-    serializedVersion: 2
-    key0: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key1: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key2: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key3: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key4: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key5: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key6: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key7: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    ctime0: 16577
-    ctime1: 25212
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 14109
-    atime1: 27216
-    atime2: 28296
-    atime3: 65535
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 4
 --- !u!4 &140986357
 Transform:
   m_ObjectHideFlags: 0
@@ -790,12 +664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &167964397
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -990,84 +858,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &198895998
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 198896001}
-  - component: {fileID: 198896000}
-  - component: {fileID: 198895999}
-  m_Layer: 0
-  m_Name: Player con 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &198895999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198895998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0ee389c144be647936a359aa96294c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PlayerPingPongController
-  playerName: Player2
-  inputKey: 108
-  totalBalls: 5
-  slideSpeed: 2.5
-  slideHalfWidth: 1.3
-  ballSpawnPoint: {fileID: 1689931267}
-  aimSweepSpeed: 120
-  aimIndicator: {fileID: 198896000}
-  powerOscillateSpeed: 1.8
-  minLaunchSpeed: 6.5
-  maxLaunchSpeed: 12.5
-  launchPitchAngle: -20
-  ballPrefab: {fileID: 6367235978949624388, guid: d2e84dc2c4f91264797329fe3e76bd1a, type: 3}
-  tableTransform: {fileID: 1363022880}
-  playerUI: {fileID: 1197392794}
---- !u!114 &198896000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198895998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08257e7b84f45dd4e91d8e24f68db5b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.AimIndicator
-  lineRenderer: {fileID: 0}
-  length: 3.5
-  startWidth: 0.08
-  endWidth: 0.02
-  indicatorColor: {r: 1, g: 0.9, b: 0.1, a: 0.9}
-  arrowTip: {fileID: 0}
---- !u!4 &198896001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198895998}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69818, y: 1.15615, z: -5.98092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274141745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,12 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &365220455
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1589,12 +1373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &397011332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1744,12 +1522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &406480377
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1807,6 +1579,118 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406480372}
   m_Mesh: {fileID: -7865316603154205875, guid: 127869e2e9cf8f94f8573ceec8d6d0a2, type: 3}
+--- !u!1 &407071598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407071599}
+  - component: {fileID: 407071602}
+  - component: {fileID: 407071601}
+  - component: {fileID: 407071600}
+  m_Layer: 0
+  m_Name: table (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407071599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407071598}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.98178, y: -6.27, z: -1.3533}
+  m_LocalScale: {x: 29.43388, y: 1.3323, z: 14.583314}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1291126923}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &407071600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407071598}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &407071601
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407071598}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &407071602
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407071598}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &447782908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,12 +1783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &447782913
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2166,12 +2044,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 492410285}
 --- !u!23 &492410288
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2631,12 +2503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &691488552
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2720,7 +2586,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704295112}
-  m_Material: {fileID: 13400000, guid: 58a9e9c7028f41189d53c7a26fba9871, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2801,7 +2667,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.98178, y: 0.49, z: -1.3533}
-  m_LocalScale: {x: 3.5267355, y: 1.3323, z: 8.941881}
+  m_LocalScale: {x: 9.094746, y: 1.3323, z: 8.941881}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1291126923}
@@ -2898,12 +2764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &721580160
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3053,12 +2913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 727639361}
 --- !u!23 &727639364
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3208,12 +3062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &743378574
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3500,12 +3348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &763230478
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3563,6 +3405,119 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763230473}
   m_Mesh: {fileID: -7865316603154205875, guid: 127869e2e9cf8f94f8573ceec8d6d0a2, type: 3}
+--- !u!1 &770637185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770637189}
+  - component: {fileID: 770637188}
+  - component: {fileID: 770637187}
+  - component: {fileID: 770637186}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &770637186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770637185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &770637187
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770637185}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &770637188
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770637185}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &770637189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770637185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.00675, y: 2.25, z: -4.91893}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1738511254}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &876355515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,12 +3748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 1146792651}
 --- !u!23 &1146792654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4097,42 +4046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ea5e1cc0029a143bb2c945282beda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongPlayerUI
-  playerNameText: {fileID: 0}
-  scoreText: {fileID: 274141747}
-  remainingBallsText: {fileID: 375586568}
-  statePromptText: {fileID: 545555030}
-  powerFillImage: {fileID: 1579354882}
-  powerSlider: {fileID: 1507906334}
-  powerGradient:
-    serializedVersion: 2
-    key0: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key1: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key2: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key3: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key4: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key5: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key6: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    key7: {r: 0.23921569, g: 0.4862745, b: 0.2784314, a: 0.28235295}
-    ctime0: 0
-    ctime1: 29992
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 14109
-    atime1: 27216
-    atime2: 28296
-    atime3: 65535
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 4
 --- !u!4 &1197392795
 Transform:
   m_ObjectHideFlags: 0
@@ -4144,118 +4057,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.17622, y: 1.15615, z: -1.16757}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1272848725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1272848729}
-  - component: {fileID: 1272848728}
-  - component: {fileID: 1272848727}
-  - component: {fileID: 1272848726}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1272848726
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272848725}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1272848727
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272848725}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1272848728
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272848725}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1272848729
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272848725}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.17, y: 2.464, z: -6.7433}
-  m_LocalScale: {x: 1, y: 2.688, z: 5.1538835}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4290,6 +4091,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 704295116}
+  - {fileID: 407071599}
   - {fileID: 1688376453}
   - {fileID: 1167982277}
   - {fileID: 1865450197}
@@ -4653,12 +4455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &1482757913
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4897,12 +4693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &1510707472
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5052,12 +4842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 1515024973}
 --- !u!23 &1515024976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5190,118 +4974,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &1592896459
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1592896463}
-  - component: {fileID: 1592896462}
-  - component: {fileID: 1592896461}
-  - component: {fileID: 1592896460}
-  m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1592896460
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592896459}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1592896461
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592896459}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1592896462
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592896459}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1592896463
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592896459}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 2.464, z: -6.7433}
-  m_LocalScale: {x: 1, y: 2.688, z: 5.1538835}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630441117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5408,7 +5080,7 @@ Transform:
   m_GameObject: {fileID: 1630441117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.6, y: 2.464, z: -6.7433}
+  m_LocalPosition: {x: 20.78, y: 2.464, z: -6.7433}
   m_LocalScale: {x: 1, y: 2.688, z: 5.1538835}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5634,6 +5306,118 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689931266}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1738511253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738511254}
+  - component: {fileID: 1738511257}
+  - component: {fileID: 1738511256}
+  - component: {fileID: 1738511255}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1738511254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738511253}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.59, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 770637189}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1738511255
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738511253}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1738511256
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738511253}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1738511257
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738511253}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1788076083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5888,12 +5672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &1798720905
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6013,7 +5791,7 @@ Transform:
   m_GameObject: {fileID: 1865450196}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.05158, y: 2.012, z: -3.8118}
+  m_LocalPosition: {x: -3.05158, y: 2.77, z: -3.8118}
   m_LocalScale: {x: 0.53331, y: 0.53331, z: 0.53331}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6076,6 +5854,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865450196}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1881644288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1881644290}
+  - component: {fileID: 1881644289}
+  m_Layer: 0
+  m_Name: GameFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1881644289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881644288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763733b1d838b394bb8406a6f4ba8f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameFlow
+  _ballAmount: 4
+  _ballPrefab: {fileID: 8195361137777604618, guid: dea564cb81a54c849ba6eeed4006994b, type: 3}
+  _spawnpoint: {fileID: 1865450197}
+--- !u!4 &1881644290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881644288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.97169, y: 1.15615, z: -5.79365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895058773
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,12 +5993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 0}
 --- !u!23 &1895058778
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6364,12 +6183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e760e32fbbef94b808e6965a654b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yatlak.MiniGame.PingPong.PingPongCup
-  scoreValue: 10
-  cupRenderer: {fileID: 0}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  scoredColor: {r: 0.2, g: 1, b: 0.3, a: 1}
-  scoreLabelText: {fileID: 0}
-  triggerCollider: {fileID: 2133952280}
 --- !u!23 &2133952283
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6564,6 +6377,132 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &1705370293293762207
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3216471460676126595, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_Name
+      value: wall right
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216471460676126595, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_TagString
+      value: wall-R
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.464
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.7433
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154890116150519960, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe00d77567832c749934ca901623bdf5, type: 3}
+--- !u!1001 &2945118481763730525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.464
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.7433
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426811890567563010, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901124674077718333, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_Name
+      value: wall left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901124674077718333, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_TagString
+      value: wall-L
+      objectReference: {fileID: 0}
+    - target: {fileID: 5920244251021184744, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
+      propertyPath: m_Size.x
+      value: 2.24
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90b26d2d6cfcb274fbae188d424f64c1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6571,13 +6510,13 @@ SceneRoots:
   - {fileID: 1788076086}
   - {fileID: 1291126923}
   - {fileID: 876355516}
-  - {fileID: 1272848729}
+  - {fileID: 2945118481763730525}
   - {fileID: 1630441121}
   - {fileID: 476296737}
-  - {fileID: 1592896463}
+  - {fileID: 1705370293293762207}
   - {fileID: 910877666}
   - {fileID: 1313338907}
   - {fileID: 140986357}
   - {fileID: 1197392795}
-  - {fileID: 100957014}
-  - {fileID: 198896001}
+  - {fileID: 1881644290}
+  - {fileID: 770637189}
