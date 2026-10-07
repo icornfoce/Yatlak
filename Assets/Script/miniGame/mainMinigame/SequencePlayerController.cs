@@ -1,132 +1,36 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
-namespace MiniGame.MainMinigame
+public class SequencePlayerController : MonoBehaviour
 {
-    /// <summary>
-    /// ตัวควบคุมการกดปุ่มของผู้เล่นแต่ละคน (P1 ใช้ WASD, P2 ใช้ลูกศร)
-    /// ตรวจสอบการกดตามลำดับ: ถ้ากดถูกตัวถัดไป ถ้ากดผิดล้างชุดเริ่มใหม่จากตัวแรก
-    /// </summary>
-    public class SequencePlayerController : MonoBehaviour
+    private SequenceUI sequenceUI;
+
+    public Slider p1Slider;
+    public Slider p2Slider;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        [Header("Player Target")]
-        public Catch.PlayerID playerID = Catch.PlayerID.Player1;
+        
+    }
 
-        [Header("State")]
-        public List<DirectionKey> currentSequence = new List<DirectionKey>();
-        public int currentIndex = 0;
-        public int completedSequenceCount = 0;
-
-        [Header("Audio (ทางเลือก)")]
-        public AudioClip correctSound;
-        public AudioClip completeSequenceSound;
-        public AudioClip wrongSound;
-
-        [Header("Events")]
-        public UnityEvent<List<DirectionKey>, int> OnSequenceUpdated; // currentSequence, currentIndex
-        public UnityEvent OnWrongKey;                                 // เมื่อกดผิด
-        public UnityEvent OnSequenceCompleted;                        // เมื่อกดครบชุด
-
-        private void Start()
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            LoadNewSequence();
+            p2Slider.value += 10f;
         }
-
-        private void Update()
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (SequenceGameManager.Instance != null && SequenceGameManager.Instance.IsGameOver)
-            {
-                return;
-            }
-
-            CheckInput();
+            Debug.Log("Down Arrow Pressed");
         }
-
-        private void LoadNewSequence()
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (SequenceGameManager.Instance != null)
-            {
-                currentSequence = SequenceGameManager.Instance.GetSequence(completedSequenceCount);
-                currentIndex = 0;
-                OnSequenceUpdated?.Invoke(currentSequence, currentIndex);
-            }
+            Debug.Log("Left Arrow Pressed");
         }
-
-        private void CheckInput()
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (currentSequence == null || currentSequence.Count == 0) return;
-
-            DirectionKey? pressedDir = GetPressedDirection();
-            if (!pressedDir.HasValue) return;
-
-            // ตรวจสอบว่าปุ่มที่กดตรงกับตำแหน่งปัจจุบันหรือไม่
-            DirectionKey expectedDir = currentSequence[currentIndex];
-
-            if (pressedDir.Value == expectedDir)
-            {
-                // กดถูกต้อง!
-                currentIndex++;
-                PlaySound(correctSound);
-
-                // ถ้ากดครบทั้งชุด (3-6 ตัว)
-                if (currentIndex >= currentSequence.Count)
-                {
-                    PlaySound(completeSequenceSound);
-                    OnSequenceCompleted?.Invoke();
-
-                    if (SequenceGameManager.Instance != null)
-                    {
-                        SequenceGameManager.Instance.RegisterSequenceCompleted(playerID, currentSequence.Count);
-                    }
-
-                    // ข้ามไปยังโจทย์ชุดถัดไป
-                    completedSequenceCount++;
-                    LoadNewSequence();
-                }
-                else
-                {
-                    OnSequenceUpdated?.Invoke(currentSequence, currentIndex);
-                }
-            }
-            else
-            {
-                // กดผิดปุ่ม! -> ล้างชุดนั้นทันที ต้องเริ่มกดตั้งแต่ตัวแรกใหม่
-                PlaySound(wrongSound);
-                currentIndex = 0;
-                OnWrongKey?.Invoke();
-                OnSequenceUpdated?.Invoke(currentSequence, currentIndex);
-            }
-        }
-
-        private DirectionKey? GetPressedDirection()
-        {
-            if (playerID == Catch.PlayerID.Player1)
-            {
-                // P1: ใช้ W A S D
-                if (Input.GetKeyDown(KeyCode.W)) return DirectionKey.Up;
-                if (Input.GetKeyDown(KeyCode.S)) return DirectionKey.Down;
-                if (Input.GetKeyDown(KeyCode.A)) return DirectionKey.Left;
-                if (Input.GetKeyDown(KeyCode.D)) return DirectionKey.Right;
-            }
-            else
-            {
-                // P2: ใช้ลูกศร (Arrow Keys)
-                if (Input.GetKeyDown(KeyCode.UpArrow)) return DirectionKey.Up;
-                if (Input.GetKeyDown(KeyCode.DownArrow)) return DirectionKey.Down;
-                if (Input.GetKeyDown(KeyCode.LeftArrow)) return DirectionKey.Left;
-                if (Input.GetKeyDown(KeyCode.RightArrow)) return DirectionKey.Right;
-            }
-
-            return null;
-        }
-
-        private void PlaySound(AudioClip clip)
-        {
-            if (clip != null)
-            {
-                AudioSource.PlayClipAtPoint(clip, transform.position);
-            }
+            Debug.Log("Right Arrow Pressed");
         }
     }
 }
