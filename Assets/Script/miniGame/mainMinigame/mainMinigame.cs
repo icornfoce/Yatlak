@@ -35,6 +35,8 @@ public class mainMinigame : MonoBehaviour
 
     private bool isGameOver = false;
 
+    public float buffTime = 0f;
+
     void Awake()
     {
         p1TargetKeys = GetRoundKeys(p1Round);

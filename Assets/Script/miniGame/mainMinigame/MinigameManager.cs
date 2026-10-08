@@ -7,7 +7,10 @@ public class MinigameManager : MonoBehaviour
     public GameObject[] minigamePrefab;
 
     public GameObject primaryMiniGame;
-GameObject currentMinigame;
+    GameObject currentMinigame;
+
+    public float P1buff;
+    public float P2buff;
 
     void Awake()
     {
@@ -22,7 +25,7 @@ GameObject currentMinigame;
         }
     }
 
-public void setCurrentMiniGame(GameObject minigame)
+    public void setCurrentMiniGame(GameObject minigame)
     {
         currentMinigame = minigame;
     }
@@ -30,6 +33,6 @@ public void setCurrentMiniGame(GameObject minigame)
     public void UpdateGameState()
     {
         currentMinigame.gameObject.SetActive(false);
-primaryMiniGame.SetActive(true);
+        primaryMiniGame.SetActive(true);
     }
 }

@@ -20,8 +20,6 @@ public class randomMinigame : MonoBehaviour
     [SerializeField] 
     private GameObject mainMinigame;
 
-    
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,18 +59,15 @@ public class randomMinigame : MonoBehaviour
     {
         if(minigamePool.Count == 0)
         {
-
             //game end
             return;
         }
       
-         int   randomIndex = Random.Range(0, minigamePool.Count);
-
-
+        int   randomIndex = Random.Range(0, minigamePool.Count);
 
         minigamePool.Remove(randomIndex);
 
-MinigameManager.Instance.setCurrentMiniGame(minigame[randomIndex]);
+        MinigameManager.Instance.setCurrentMiniGame(minigame[randomIndex]);
         minigame[randomIndex].SetActive(true);
     }
 }
