@@ -737,6 +737,10 @@ MonoBehaviour:
   - {fileID: 2893480512756752491, guid: 22d7aa4271a8ca0469c47050545c8040, type: 3}
   moveSpeed: 8
   timeLeft: 60
+  catchSound: {fileID: 8300000, guid: d51becd7712fdf641a60c5b136311a2d, type: 3}
+  gameOverSound: {fileID: 0}
+  catchVfxPrefab: {fileID: 0}
+  gameOverVfxPrefab: {fileID: 0}
 --- !u!1 &2370019302362232758
 GameObject:
   m_ObjectHideFlags: 0
