@@ -9,6 +9,7 @@ TagManager:
   - wall-L
   - cup
   - Fruit
+  - ball
   layers:
   - Default
   - TransparentFX

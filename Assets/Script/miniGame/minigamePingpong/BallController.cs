@@ -1,88 +1,122 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    [Header("setting")]
-    [SerializeField] float _ballSpeed;
-    [SerializeField] float _powershoot;
-    [SerializeField] float _powershootup;
-    [SerializeField] float _height;
-    [SerializeField] float _turnspeed;
+    [Header("Player Controls")]
+    public int playerNumber = 1;
+    public KeyCode _keyShoot = KeyCode.W;
+    public KeyCode _keyLeft = KeyCode.A;
+    public KeyCode _keyRight = KeyCode.D;
 
-    //[SerializeField] float _bounce;
+    [Header("setting")]
+    [SerializeField] float _ballSpeed = 3f;
+    [SerializeField] float _turnspeed = 3f;
+    [SerializeField] float _powershoot = 3f;
 
     [Header("obj set up")]
     [SerializeField] Transform _shootPoint;
-    [SerializeField] GameObject _ball;
-    [SerializeField] GameObject _wallLeft;
-    [SerializeField] GameObject _wallRight;
+    public GameObject _ball;
+    public GameObject _wallLeft;
+    public GameObject _wallRight;
+
+    [Header("UI set up")]
+    public SliderController _SlideValue;
 
     private int _clickCount = 0;
-    private Transform _target;
-    private Quaternion _originalRotation;
+    private Rigidbody rb;
+    private bool lockpos;
+    private Vector3 startPos;
+    private float moveDir = 1f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        _originalRotation = transform.rotation;
-        _target = _wallLeft.transform;
-       
+        rb = GetComponent<Rigidbody>();
+        _ball = gameObject;
+        if (playerNumber == 2)
+        {
+            _keyShoot = KeyCode.UpArrow;
+            _keyLeft = KeyCode.LeftArrow;
+            _keyRight = KeyCode.RightArrow;
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        lockpos = true;
+        startPos = transform.position;
+        if (playerNumber == 2)
+        {
+            _keyShoot = KeyCode.UpArrow;
+            _keyLeft = KeyCode.LeftArrow;
+            _keyRight = KeyCode.RightArrow;
+        }
+        _SlideValue.UnEnable();
+    }
+
     void Update()
     {
+        freezepos();
+        freezerota();
+
         if (_clickCount == 0)
         {
-            _ball.transform.position = Vector3.MoveTowards(_ball.transform.position, _target.transform.position, _ballSpeed * Time.deltaTime);
-
-            if (Input.GetKeyDown(KeyCode.W))
+            transform.position += Vector3.right * moveDir * _ballSpeed * Time.deltaTime;
+            if (transform.position.x > startPos.x + 2.2f)
             {
-                transform.rotation = _originalRotation;
-                _clickCount++;
+                moveDir = -1f;
             }
-        } 
-        else if (_clickCount == 1)
-        {
-            float horizontal = 0f;
-            if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
-            if (Input.GetKey(KeyCode.D)) horizontal += 1f;
-            transform.Rotate(Vector3.up, horizontal * _turnspeed * Time.deltaTime, Space.World);
-
-            if (Input.GetKeyDown(KeyCode.W) )
+            else if (transform.position.x < startPos.x - 2.2f)
             {
-                Shoot();
+                moveDir = 1f;
+            }
+
+            if (Input.GetKeyDown(_keyShoot))
+            {
                 _clickCount++;
             }
         }
+        else if (_clickCount == 1)
+        {
+            rb.useGravity = false;
+            float horizontal = 0f;
+            if (Input.GetKey(_keyLeft)) horizontal -= 1f;
+            if (Input.GetKey(_keyRight)) horizontal += 1f;
+
+            transform.Rotate(Vector3.up, horizontal * _turnspeed * Time.deltaTime, Space.World);
+
+            _SlideValue.Enable();
+
+            if (Input.GetKeyDown(_keyShoot))
+            {
+                lockpos = false;
+                rb.useGravity = true;
+                Shoot();
+                _SlideValue.setzero();
+                _clickCount++;
+            }
+        }
+    }
+
+    private void freezepos()
+    {
+        if (lockpos == true)
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX;
+        }
+        else if (lockpos == false)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
+    }
+
+    private void freezerota()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("wall-R"))
-        {
-            _target = _wallLeft.transform;
-        }
-        else if (other.CompareTag("wall-L"))
-        {
-            _target = _wallRight.transform;
-        }
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("wall-R"))
-        {
-            _target = _wallLeft.transform;
-        }
-        else if (other.gameObject.CompareTag("wall-L"))
-        {
-            _target = _wallRight.transform;
-        }
-
-        else if (other.gameObject.CompareTag("cup"))
+        if (other.CompareTag("cup"))
         {
             Destroy(gameObject);
         }
@@ -91,11 +125,16 @@ public class BallController : MonoBehaviour
     void Shoot()
     {
         Rigidbody ballRb = _ball.GetComponent<Rigidbody>();
-        Vector3 forceToAdd = (transform.forward * _powershoot) + (transform.up * _powershootup);
+        Vector3 forceToAdd = (transform.forward * _powershoot) + (Vector3.up * _SlideValue._powershootcurrent);
         ballRb.AddForce(forceToAdd, ForceMode.Impulse);
         Destroy(gameObject, 3);
-        GameFlow.Instance.BallDective();
+        if (playerNumber == 1)
+        {
+            GameFlow.Instance.Ball1Deactive();
+        }
+        else
+        {
+            GameFlow.Instance.Ball2Deactive();
+        }
     }
-
- 
 }

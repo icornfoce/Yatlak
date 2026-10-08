@@ -108,7 +108,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -125,10 +125,10 @@ GameObject:
   - component: {fileID: 1727438002051681181}
   - component: {fileID: 7560122824280519594}
   - component: {fileID: 1732689940393861421}
-  - component: {fileID: -7595594184350881579}
+  - component: {fileID: -8029438617243902542}
   m_Layer: 0
-  m_Name: Pingpong
-  m_TagString: Untagged
+  m_Name: Pingpong 1
+  m_TagString: ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 6367235978949624388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.874, y: 1.704, z: -4.478}
+  m_LocalPosition: {x: -0.3, y: 2.464, z: -6.7433}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -213,7 +213,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6367235978949624388}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 58a9e9c7028f41189d53c7a26fba9871, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -235,7 +235,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6367235978949624388}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -252,9 +252,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &-7595594184350881579
+--- !u!114 &-8029438617243902542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,12 +267,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallController
   _ballSpeed: 3
-  _powershoot: 20
-  _powershootup: 20
-  _height: 1
-  _turnspeed: 0
-  GameFlow: {fileID: 2429831209868082352, guid: 50692a4024743944ab95488813f8db57, type: 3}
-  _shootPoint: {fileID: 9017016022489841386}
+  _turnspeed: 50
+  _powershoot: 5
+  _shootPoint: {fileID: 996268836433991177}
   _ball: {fileID: 6367235978949624388}
-  _wallLeft: {fileID: 4791062886458959935, guid: bbadf8ecd6af9964095d943009388282, type: 3}
-  _wallRight: {fileID: 1644693952117905810, guid: a9119aee45688d941b99ca829f970869, type: 3}
+  _wallLeft: {fileID: 912345978379176337, guid: bbadf8ecd6af9964095d943009388282, type: 3}
+  _wallRight: {fileID: 2922664848034007794, guid: a9119aee45688d941b99ca829f970869, type: 3}
