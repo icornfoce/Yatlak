@@ -42,8 +42,10 @@ public class minigameCatch : MinigameBase
     private float maxX2;
 
     private float time = 0f;
-
+    public Slider volumeSlider;
     [Header("SFX")]
+    [Range(0f, 1f)]
+    public float sfxVolume = 1f;
     public AudioClip catchSound;
     public AudioClip gameOverSound;
     private AudioSource audioSource2D;
@@ -78,6 +80,17 @@ public class minigameCatch : MinigameBase
         if (p1ScoreText != null) p1ScoreInitialScale = p1ScoreText.transform.localScale;
         if (p2ScoreText != null) p2ScoreInitialScale = p2ScoreText.transform.localScale;
         if (TimerText != null) timerInitialScale = TimerText.transform.localScale;
+
+        if (audioSource2D != null)
+        {
+            audioSource2D.volume = sfxVolume;
+        }
+
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = sfxVolume;
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+        }
     }
 
     void Update()
@@ -140,8 +153,16 @@ public class minigameCatch : MinigameBase
     {
         if (audioSource2D != null && clip != null)
         {
-            audioSource2D.PlayOneShot(clip);
+            audioSource2D.PlayOneShot(clip sfxVolume);
         }
+    }
+
+    public void SetVolume(float volume)
+    {
+        sfxVolume = Mathf.Clamp01(volume);
+        if (audioSource2D != null)
+        {
+            audioSource2D.volume = sfxVolume;
     }
 
     void TriggerCatchVFX(int playerNumber, Vector3 fruitPos)

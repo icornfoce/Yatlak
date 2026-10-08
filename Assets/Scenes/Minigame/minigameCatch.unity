@@ -294,6 +294,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2061104778653230941, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
+      propertyPath: sfxVolume
+      value: 0.269
+      objectReference: {fileID: 0}
     - target: {fileID: 2288891853255595491, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
       propertyPath: m_Name
       value: minigameCatch
