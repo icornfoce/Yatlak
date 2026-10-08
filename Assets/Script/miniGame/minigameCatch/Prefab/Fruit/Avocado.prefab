@@ -145,7 +145,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.75
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b525e20e939bb7641adda65db35f09b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fruits
-  minigameCatch: {fileID: 2288891853255595491, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
+  controller: {fileID: 0}
