@@ -89,19 +89,21 @@ public class minigameCatch : MinigameBase
     void spawnFruitBothSides()
     {
         time += Time.deltaTime;
-        GameObject randomFruit = Fruits[Random.Range(0, Fruits.Length)];
 
         if (time >= 0.2f)
         {
-            SpawnFruit(randomFruit, minX1, maxX1);
-            SpawnFruit(randomFruit, minX2, maxX2);
+            GameObject randomFruit = Fruits[Random.Range(0, Fruits.Length)];
+            float randomOffset = Random.Range(-3.5f, 3.5f);
+
+            SpawnFruit(randomFruit, camera1.transform.position.x + randomOffset);
+            SpawnFruit(randomFruit, camera2.transform.position.x + randomOffset);
             time = 0f;
         }
     }
 
-    void SpawnFruit(GameObject fruit, float minX, float maxX)
+    void SpawnFruit(GameObject fruit, float posX)
     {
-        Vector3 randomPosition = new Vector3(Random.Range(minX, maxX), 6f, 0f);
+        Vector3 randomPosition = new Vector3(posX, 6f, 0f);
         GameObject spawnedObject = Instantiate(fruit, randomPosition, Quaternion.identity);
         Fruits fruitComponent = spawnedObject.GetComponent<Fruits>();
         if (fruitComponent != null)

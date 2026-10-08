@@ -90,7 +90,40 @@ public class mainMinigame : MonoBehaviour
     {
         if (MinigameManager.Instance != null && (MinigameManager.Instance.P1buff > 0f || MinigameManager.Instance.P2buff > 0f))
         {
-            buffTime = 10f;
+            buffTime = 5f;
+        }
+
+        if (p1Slider != null && p2Slider != null)
+        {
+            if (p1Slider.value >= 75f || p2Slider.value >= 75f)
+            {
+                if (p1Slider.value < p2Slider.value)
+                {
+                    if (p1Slider.value < 25f)
+                    {
+                        if (MinigameManager.Instance != null) MinigameManager.Instance.P1buff = 10f;
+                        buffTime = 5f;
+                    }
+                    else if (p1Slider.value < 50f)
+                    {
+                        if (MinigameManager.Instance != null) MinigameManager.Instance.P1buff = 5f;
+                        buffTime = 5f;
+                    }
+                }
+                else if (p2Slider.value < p1Slider.value)
+                {
+                    if (p2Slider.value < 25f)
+                    {
+                        if (MinigameManager.Instance != null) MinigameManager.Instance.P2buff = 10f;
+                        buffTime = 5f;
+                    }
+                    else if (p2Slider.value < 50f)
+                    {
+                        if (MinigameManager.Instance != null) MinigameManager.Instance.P2buff = 5f;
+                        buffTime = 5f;
+                    }
+                }
+            }
         }
     }
 
