@@ -8,6 +8,7 @@ TagManager:
   - wall-R
   - wall-L
   - cup
+  - Fruit
   layers:
   - Default
   - TransparentFX
