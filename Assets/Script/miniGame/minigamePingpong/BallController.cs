@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -16,22 +17,37 @@ public class BallController : MonoBehaviour
     [Header("obj set up")]
     [SerializeField] Transform _shootPoint;
     public GameObject _ball;
- 
+    [SerializeField] GameObject guideshoot;
+
     public SliderController _SlideValue;
 
     [Header("Audio")]
     [SerializeField] AudioClip _throwSfx;
+
+    [Header("UI")]
+    public TextMeshProUGUI statusText;
+    
 
     private int _clickCount = 0;
     private Rigidbody rb;
     private bool lockpos;
     private Vector3 startPos;
     private float moveDir = 1f;
+    
 
     void Awake()
     {
+        if (guideshoot == null || guideshoot == gameObject)
+        {
+            Transform arrow = transform.Find("3D RightArrow");
+            if (arrow == null) arrow = transform.Find("3DRightArrow");
+            if (arrow != null) guideshoot = arrow.gameObject;
+            else guideshoot = null;
+        }
+
         rb = GetComponent<Rigidbody>();
         _ball = gameObject;
+        
         if (playerNumber == 2)
         {
             _keyShoot = KeyCode.UpArrow;
@@ -42,9 +58,16 @@ public class BallController : MonoBehaviour
 
     void Start()
     {
+        if (statusText == null)
+        {
+            GameObject statObj = GameObject.Find("Stat" + playerNumber);
+            if (statObj != null) statusText = statObj.GetComponent<TextMeshProUGUI>();
+        }
+
         lockpos = true;
         rb.useGravity = false;
         startPos = transform.position;
+        if (guideshoot != null) guideshoot.SetActive(false);
 
         if (playerNumber == 2)
         {
@@ -61,6 +84,8 @@ public class BallController : MonoBehaviour
 
         if (playerNumber == 1)
         {
+
+            
             _SlideValue = GameFlow.Instance._slider1;
         }
         else if (playerNumber == 2)
@@ -77,6 +102,17 @@ public class BallController : MonoBehaviour
 
         if (_clickCount == 0)
         {
+            if (statusText != null)
+            {
+                if (playerNumber == 1)
+                {
+                    statusText.text = " [Press W to lock MoveMent] ";
+                }
+                else if (playerNumber == 2)
+                {
+                    statusText.text = " [Press Arrow Up to lock MoveMent] ";
+                }
+            }
             transform.position += Vector3.right * moveDir * _ballSpeed * Time.deltaTime;
             if (transform.position.x > startPos.x + 1f)
             {
@@ -94,6 +130,15 @@ public class BallController : MonoBehaviour
         }
         else if (_clickCount == 1)
         {
+            if (playerNumber == 1)
+            {
+                statusText.text = " [Press A, D to move and W to shoot] ";
+            }
+            else if (playerNumber == 2)
+            {
+                statusText.text = " [Press Arrow Right, Arrow Left to move and Arrow Up to shoot] ";
+            }
+            if (guideshoot != null) guideshoot.SetActive(true);
             float horizontal = 0f;
             if (Input.GetKey(_keyLeft)) horizontal -= 1f;
             if (Input.GetKey(_keyRight)) horizontal += 1f;
@@ -104,6 +149,7 @@ public class BallController : MonoBehaviour
 
             if (Input.GetKeyDown(_keyShoot))
             {
+                if (guideshoot != null) guideshoot.SetActive(false);
                 lockpos = false;
                 rb.constraints = RigidbodyConstraints.None;
                 rb.useGravity = true;

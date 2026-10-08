@@ -51,8 +51,11 @@ public class GameFlow : MinigameBase
 
     void Start()
     {
-        _ballPrefab2 = _ballPrefab;
-        _spawnpoint2 = GameObject.Find("Spawn point P1 (1)").transform;
+        _isBallActive = false;
+        _isBallActive2 = false;
+
+        if (_ballPrefab2 == null) _ballPrefab2 = _ballPrefab;
+        if (_spawnpoint2 == null) _spawnpoint2 = GameObject.Find("Spawn point P1 (1)").transform;
 
         _scoreText1 = GameObject.Find("Score 1").GetComponent<TextMeshProUGUI>();
         _scoreText2 = GameObject.Find("Score 2").GetComponent<TextMeshProUGUI>();
@@ -91,6 +94,8 @@ public class GameFlow : MinigameBase
 
     public override void OverwritedResult()
     {
+        
+
         if (score1 > score2)
         {
             p1ResultText.gameObject.SetActive(true);
