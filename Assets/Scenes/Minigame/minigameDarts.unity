@@ -299,7 +299,8 @@ PrefabInstance:
       value: minigameDarts
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8613314102032832972, guid: a0b9ba40c84d5e849b70c2c6b8226444, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0b9ba40c84d5e849b70c2c6b8226444, type: 3}
