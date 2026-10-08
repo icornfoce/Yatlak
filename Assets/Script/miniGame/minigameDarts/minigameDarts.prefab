@@ -428,8 +428,8 @@ MonoBehaviour:
   aimRangeY: 2.5
   moveSpeedX: 11
   moveSpeedY: 12.5
-  lockSound: {fileID: 0}
-  hitSound: {fileID: 0}
+  lockSound: {fileID: 8300000, guid: b3685236d6fa5a9438b276cb35cb90c9, type: 3}
+  hitSound: {fileID: 8300000, guid: 7923605382a2e5e41a6a7e9bee9048cc, type: 3}
 --- !u!1 &1300741897765492423
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,8 +729,8 @@ MonoBehaviour:
   aimRangeY: 2.5
   moveSpeedX: 11
   moveSpeedY: 12.5
-  lockSound: {fileID: 0}
-  hitSound: {fileID: 0}
+  lockSound: {fileID: 8300000, guid: b3685236d6fa5a9438b276cb35cb90c9, type: 3}
+  hitSound: {fileID: 8300000, guid: 7923605382a2e5e41a6a7e9bee9048cc, type: 3}
 --- !u!1 &2798965670738969590
 GameObject:
   m_ObjectHideFlags: 0
