@@ -106,7 +106,6 @@ public class DartsPlayer : MonoBehaviour
                 direction = 1;
             }
         }
-        // crosshair เป็น UI จึงต้องแปลงตำแหน่งในฉากเป็นตำแหน่งบนหน้าจอ
         Vector3 aimPoint = new Vector3(target.position.x + aimX, target.position.y + aimY, 0);
         crosshair.position = cam.WorldToScreenPoint(aimPoint);
     }
@@ -141,7 +140,7 @@ public class DartsPlayer : MonoBehaviour
         float distance = new Vector2(aimX, aimY).magnitude;
 
         int points = 0;
-        if (distance <= 0.35f)
+        if (distance <= 0.5f)
         {
             points = 100;
             statusText.text = "+100 BULLSEYE!";
@@ -156,18 +155,21 @@ public class DartsPlayer : MonoBehaviour
             points = 40;
             statusText.text = "+40 MIDDLE RING!";
         }
-        else if (distance <= 2.4f) 
+        else if (distance <= 2.1f) 
         {
             points = 20;
             statusText.text = "+20 OUTER RING!";
+        }
+        else if (distance <= 2.8f) 
+        {
+            points = 10;
+            statusText.text = "+10 SUPER OUTER RING!";
         }
         else
         {
             statusText.text = "MISS!";
         }
-
         manager.AddScore(playerNumber, points);
-
         Invoke("NextDart", 1f); 
     }
 
@@ -180,7 +182,6 @@ public class DartsPlayer : MonoBehaviour
             crosshair.gameObject.SetActive(false); 
             return;
         }
-
         StartAiming();
     }
 
