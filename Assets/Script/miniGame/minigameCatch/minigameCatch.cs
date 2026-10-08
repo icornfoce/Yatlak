@@ -153,7 +153,7 @@ public class minigameCatch : MinigameBase
     {
         if (audioSource2D != null && clip != null)
         {
-            audioSource2D.PlayOneShot(clip sfxVolume);
+            audioSource2D.PlayOneShot(clip, sfxVolume);
         }
     }
 
@@ -163,6 +163,7 @@ public class minigameCatch : MinigameBase
         if (audioSource2D != null)
         {
             audioSource2D.volume = sfxVolume;
+        }
     }
 
     void TriggerCatchVFX(int playerNumber, Vector3 fruitPos)

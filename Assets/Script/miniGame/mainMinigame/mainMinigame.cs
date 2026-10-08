@@ -37,6 +37,8 @@ public class mainMinigame : MonoBehaviour
     private bool isGameOver = false;
 
     public float buffTime = 0f;
+    public GameObject positionP1;
+    public GameObject positionP2;
 
     [Header("SFX")]
     public AudioClip correctKeySound;
@@ -44,10 +46,12 @@ public class mainMinigame : MonoBehaviour
     public AudioClip roundSuccessSound;
     public AudioClip winSound;
     private AudioSource audioSource2D;
+    public AudioClip buffSound;
 
     [Header("VFX")]
     public GameObject roundSuccessVfxPrefab;
     public GameObject winVfxPrefab;
+    public GameObject buffVfx;
 
     [Header("Animation")]
     public Animator p1Animator;
@@ -95,6 +99,9 @@ public class mainMinigame : MonoBehaviour
             p2SliderInitialScale = p2Slider.transform.localScale;
             p2SliderTarget = p2Slider.value;
         }
+
+        if (p1ResultText != null) p1ResultText.gameObject.SetActive(false);
+        if (p2ResultText != null) p2ResultText.gameObject.SetActive(false);
     }
 
     void OnEnable()
@@ -105,6 +112,8 @@ public class mainMinigame : MonoBehaviour
         if (MinigameManager.Instance != null && (MinigameManager.Instance.P1buff > 0f || MinigameManager.Instance.P2buff > 0f))
         {
             buffTime = 5f;
+            if (MinigameManager.Instance.P1buff > 0f) TriggerBuffVFX(1);
+            if (MinigameManager.Instance.P2buff > 0f) TriggerBuffVFX(2);
         }
 
         if (p1Slider != null && p2Slider != null)
@@ -117,11 +126,13 @@ public class mainMinigame : MonoBehaviour
                     {
                         if (MinigameManager.Instance != null) MinigameManager.Instance.P1buff = 10f;
                         buffTime = 5f;
+                        TriggerBuffVFX(1);
                     }
                     else if (p1Slider.value < 50f)
                     {
                         if (MinigameManager.Instance != null) MinigameManager.Instance.P1buff = 5f;
                         buffTime = 5f;
+                        TriggerBuffVFX(1);
                     }
                 }
                 else if (p2Slider.value < p1Slider.value)
@@ -130,11 +141,13 @@ public class mainMinigame : MonoBehaviour
                     {
                         if (MinigameManager.Instance != null) MinigameManager.Instance.P2buff = 10f;
                         buffTime = 5f;
+                        TriggerBuffVFX(2);
                     }
                     else if (p2Slider.value < 50f)
                     {
                         if (MinigameManager.Instance != null) MinigameManager.Instance.P2buff = 5f;
                         buffTime = 5f;
+                        TriggerBuffVFX(2);
                     }
                 }
             }
@@ -378,6 +391,39 @@ public class mainMinigame : MonoBehaviour
             }
         }
         if (p2Text != null) p2Text.text = p2DisplayText.TrimEnd();
+
+        if (!isGameOver)
+        {
+            if (p1ResultText != null)
+            {
+                if (MinigameManager.Instance != null && MinigameManager.Instance.P1buff > 0f && buffTime > 0f)
+                {
+                    p1ResultText.gameObject.SetActive(true);
+                    string mult = (MinigameManager.Instance.P1buff >= 10f) ? "x3" : "x2";
+                    p1ResultText.text = $"BUFF {mult}";
+                }
+                else if (p1ResultText.text.StartsWith("BUFF"))
+                {
+                    p1ResultText.gameObject.SetActive(false);
+                    p1ResultText.text = "";
+                }
+            }
+
+            if (p2ResultText != null)
+            {
+                if (MinigameManager.Instance != null && MinigameManager.Instance.P2buff > 0f && buffTime > 0f)
+                {
+                    p2ResultText.gameObject.SetActive(true);
+                    string mult = (MinigameManager.Instance.P2buff >= 10f) ? "x3" : "x2";
+                    p2ResultText.text = $"BUFF {mult}";
+                }
+                else if (p2ResultText.text.StartsWith("BUFF"))
+                {
+                    p2ResultText.gameObject.SetActive(false);
+                    p2ResultText.text = "";
+                }
+            }
+        }
     }
 
     string GetKeyLetter(DirectionKey key)
@@ -484,10 +530,38 @@ public class mainMinigame : MonoBehaviour
     {
         if (roundSuccessVfxPrefab != null)
         {
-            Slider slider = (playerNumber == 1) ? p1Slider : p2Slider;
-            Vector3 spawnPos = (slider != null) ? slider.transform.position : Vector3.zero;
+            GameObject targetPos = (playerNumber == 1) ? positionP1 : positionP2;
+            Vector3 spawnPos = (targetPos != null) ? targetPos.transform.position : 
+                (((playerNumber == 1) ? p1Slider : p2Slider) != null ? ((playerNumber == 1) ? p1Slider : p2Slider).transform.position : Vector3.zero);
             GameObject vfx = Instantiate(roundSuccessVfxPrefab, spawnPos, Quaternion.identity);
             Destroy(vfx, 1.5f);
+        }
+    }
+
+    void TriggerBuffVFX(int playerNumber)
+    {
+        if (buffVfx != null)
+        {
+            GameObject targetPos = (playerNumber == 1) ? positionP1 : positionP2;
+            Vector3 spawnPos = (targetPos != null) ? targetPos.transform.position : 
+                (((playerNumber == 1) ? p1Slider : p2Slider) != null ? ((playerNumber == 1) ? p1Slider : p2Slider).transform.position : Vector3.zero);
+            GameObject vfx = Instantiate(buffVfx, spawnPos, Quaternion.identity);
+            Destroy(vfx, 2f);
+        }
+        PlaySound(buffSound);
+
+        TextMeshProUGUI resultText = (playerNumber == 1) ? p1ResultText : p2ResultText;
+        if (resultText != null && !isGameOver)
+        {
+            resultText.gameObject.SetActive(true);
+            float buffVal = (playerNumber == 1 && MinigameManager.Instance != null) ? MinigameManager.Instance.P1buff : 
+                            (playerNumber == 2 && MinigameManager.Instance != null) ? MinigameManager.Instance.P2buff : 0f;
+            string mult = (buffVal >= 10f) ? "x3" : "x2";
+            resultText.text = $"BUFF {mult}";
+            resultText.transform.DOKill();
+            resultText.transform.localScale = Vector3.zero;
+            resultText.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
+            resultText.transform.DOPunchScale(Vector3.one * 0.25f, 0.3f, 4, 0.5f).SetDelay(0.4f);
         }
     }
 
