@@ -42,7 +42,7 @@ public class BallController : MonoBehaviour
             Transform arrow = transform.Find("3D RightArrow");
             if (arrow == null) arrow = transform.Find("3DRightArrow");
             if (arrow != null) guideshoot = arrow.gameObject;
-            else guideshoot = null;
+            
         }
 
         rb = GetComponent<Rigidbody>();
