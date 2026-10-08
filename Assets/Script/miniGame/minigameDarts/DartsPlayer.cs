@@ -35,6 +35,8 @@ public class DartsPlayer : MonoBehaviour
 
     public AudioClip hitSound;
 
+    private AudioSource audioSource2D;
+
 
     int step = 0;//0 = ปาครบแล้ว 1 = เล็งซ้ายขวา 2 = เล็งขึ้นลง 3 = ปา
 
@@ -189,7 +191,12 @@ public class DartsPlayer : MonoBehaviour
     {
         if (sound != null)
         {
-            AudioSource.PlayClipAtPoint(sound, transform.position);
+            audioSource2D.PlayOneShot(sound);
         }
+    }
+    void Awake()
+    {
+        audioSource2D = gameObject.AddComponent<AudioSource>();
+        audioSource2D.spatialBlend = 0f;
     }
 }

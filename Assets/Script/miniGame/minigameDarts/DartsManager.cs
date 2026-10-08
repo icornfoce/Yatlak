@@ -135,8 +135,7 @@ public class DartsManager : MinigameBase
     void ShowTime()
     {
         int allSeconds = Mathf.CeilToInt(timeLeft);
-        int minutes = allSeconds / 60;
         int seconds = allSeconds % 60;
-        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00"); 
+        timerText.text = seconds.ToString("00"); 
     }
 }
