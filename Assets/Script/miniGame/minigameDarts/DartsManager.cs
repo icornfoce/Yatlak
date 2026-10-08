@@ -25,6 +25,7 @@ public class DartsManager : MinigameBase
 
     void Start()
     {
+        ClearAllDarts();
         p1Score = 0;
         p2Score = 0;
         p1DartsLeft = maxDarts;
@@ -104,6 +105,7 @@ public class DartsManager : MinigameBase
     public override void  OverwritedResult()
     {
         isPlaying = false;
+        ClearAllDarts();
 
         if (p1Score > p2Score)
         {
@@ -136,6 +138,18 @@ public class DartsManager : MinigameBase
             }
         }
         if (MinigameManager.Instance != null) MinigameManager.Instance.UpdateGameState(); 
+    }
+
+    public void ClearAllDarts()
+    {
+        DartsPlayer[] players = GetComponentsInChildren<DartsPlayer>(true);
+        foreach (DartsPlayer player in players)
+        {
+            if (player != null)
+            {
+                player.ClearDarts();
+            }
+        }
     }
 
     void ShowScore()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 
 public class DartsPlayer : MonoBehaviour
@@ -36,6 +37,8 @@ public class DartsPlayer : MonoBehaviour
     public AudioClip hitSound;
 
     private AudioSource audioSource2D;
+
+    private List<GameObject> spawnedDarts = new List<GameObject>();
 
 
     int step = 0;//0 = ปาครบแล้ว 1 = เล็งซ้ายขวา 2 = เล็งขึ้นลง 3 = ปา
@@ -136,7 +139,11 @@ public class DartsPlayer : MonoBehaviour
 
     void DartHit()
     {
-        Instantiate(dartPrefab, new Vector3(target.position.x + aimX, target.position.y + aimY, 0), Quaternion.identity);
+        GameObject dart = Instantiate(dartPrefab, new Vector3(target.position.x + aimX, target.position.y + aimY, 0), Quaternion.identity, transform);
+        if (dart != null)
+        {
+            spawnedDarts.Add(dart);
+        }
         PlaySound(hitSound);
 
         float distance = new Vector2(aimX, aimY).magnitude;
@@ -173,6 +180,28 @@ public class DartsPlayer : MonoBehaviour
         }
         manager.AddScore(playerNumber, points);
         Invoke("NextDart", 1f); 
+    }
+
+    public void ClearDarts()
+    {
+        foreach (GameObject dart in spawnedDarts)
+        {
+            if (dart != null)
+            {
+                Destroy(dart);
+            }
+        }
+        spawnedDarts.Clear();
+    }
+
+    private void OnDisable()
+    {
+        ClearDarts();
+    }
+
+    private void OnDestroy()
+    {
+        ClearDarts();
     }
 
     void NextDart()
