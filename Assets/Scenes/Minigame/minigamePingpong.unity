@@ -739,6 +739,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534163017}
   m_CullTransparentMesh: 1
+--- !u!1 &1537864746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537864747}
+  - component: {fileID: 1537864749}
+  - component: {fileID: 1537864748}
+  m_Layer: 5
+  m_Name: RawImage (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1537864747
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537864746}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.20855048, y: 8.357859, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4256226227633141969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 483.96997, y: 506}
+  m_SizeDelta: {x: 316.4478, y: 115.1024}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1537864748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537864746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.77519983, g: 0.9254902, b: 0.6392157, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1537864749
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537864746}
+  m_CullTransparentMesh: 1
 --- !u!4 &1664367032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 246300292787763921, guid: f98b8b2798645be43941172760dda529, type: 3}
@@ -1049,7 +1121,6 @@ Transform:
   - {fileID: 8734584779654172666}
   - {fileID: 7683415993497353389}
   - {fileID: 7586965655715440450}
-  - {fileID: 3955351771266185685}
   - {fileID: 7847649509005001757}
   m_Father: {fileID: 6344100413534194175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1086,7 +1157,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: edbf56ddc1241a443959c3cad7b7b00d, type: 2}
+  - {fileID: 2100000, guid: a8ad805be22047f4299f021631e3dddf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1118,12 +1189,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3975695944257489957}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.131979, y: -0.18786, z: 4.69604}
+  m_LocalRotation: {x: -0.026882911, y: -0, z: -0, w: 0.9996386}
+  m_LocalPosition: {x: -0.6399995, y: -3.85, z: 12.99}
   m_LocalScale: {x: 17.41351, y: 21.666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3016880354864464430}
+  m_Father: {fileID: 7764881242980880949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391226087535428150
 GameObject:
@@ -1204,10 +1275,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1436,14 +1515,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1530,10 +1617,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1599,10 +1698,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1668,14 +1775,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1705,7 +1824,7 @@ Transform:
   m_GameObject: {fileID: 3531972832714120674}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4417896, y: 0.30214, z: -1.56989}
+  m_LocalPosition: {x: -1.0900002, y: 0.47000015, z: -0.69000053}
   m_LocalScale: {x: 3.5267355, y: 1.3323, z: 8.941881}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1842,10 +1961,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1945,7 +2076,7 @@ Transform:
   m_GameObject: {fileID: 1584948058157868227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.161789, y: 2.37214, z: -4.02839}
+  m_LocalPosition: {x: -1.161789, y: 2.56, z: -4.02839}
   m_LocalScale: {x: 0.53331, y: 0.53331, z: 0.53331}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2011,10 +2142,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2271,14 +2410,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2637,9 +2788,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7764881242980880949}
-  - {fileID: 1488297610304377483}
   - {fileID: 1705159346352741114}
-  - {fileID: 356394451043784628}
+  - {fileID: 1488297610304377483}
   - {fileID: 6604510311335487022}
   m_Father: {fileID: 6344100413534194175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2937,7 +3087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19, y: -211.29462}
+  m_AnchoredPosition: {x: -7, y: -211.29462}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3551901422280702364
@@ -3216,12 +3366,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8757738524713246702}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.71861, y: 0, z: 4.91263}
+  m_LocalRotation: {x: -0.053189997, y: -0, z: -0, w: 0.9985844}
+  m_LocalPosition: {x: -0.09, y: -3.75, z: 13.64}
   m_LocalScale: {x: 17.7189, y: 21.666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 25619883274698197}
+  m_Father: {fileID: 7683415993497353389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3975695944257489957
 GameObject:
@@ -3298,6 +3448,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1537864747}
   - {fileID: 1654438003748522237}
   - {fileID: 4491306894339288239}
   - {fileID: 3532630506997989572}
@@ -3407,10 +3558,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3537,14 +3700,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3610,10 +3781,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3685,7 +3868,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -3903,14 +4086,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3993,14 +4188,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4208,10 +4415,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4307,7 +4522,7 @@ Transform:
   m_GameObject: {fileID: 3344263489576293987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3882103, y: -3.57771, z: 4.19604}
+  m_LocalPosition: {x: 5.6813316, y: -3.4098501, z: 5.0759296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4407,7 +4622,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: edbf56ddc1241a443959c3cad7b7b00d, type: 2}
+  - {fileID: 2100000, guid: f75af74448ccc1240aa38e795f5673fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4541,10 +4756,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4640,14 +4867,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4709,13 +4944,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6117755817989251512}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18552619, y: 0.008626274, z: -0.0010472382, w: 0.9826009}
-  m_LocalPosition: {x: -2.77, y: 3.94, z: -6.99}
+  m_LocalRotation: {x: 0.1044683, y: 0.00037575385, z: 0.0031096528, w: 0.99452335}
+  m_LocalPosition: {x: -2.77, y: 4.24, z: -8.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3955351771266185685}
   m_Father: {fileID: 25619883274698197}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 11.993, y: 0.082, z: 0.367}
 --- !u!33 &7697680205213418570
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4803,13 +5039,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391226087535428150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18552619, y: 0.008626274, z: -0.0010472382, w: 0.9826009}
-  m_LocalPosition: {x: -1.8583698, y: 3.76814, z: -7.4823904}
+  m_LocalRotation: {x: 0.104469456, y: 0.0003770929, z: 0.0031104044, w: 0.99452317}
+  m_LocalPosition: {x: -1.09, y: 4.24, z: -8.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 356394451043784628}
   m_Father: {fileID: 3016880354864464430}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 11.993, y: 0.082, z: 0.367}
 --- !u!1 &7797655137548376751
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,14 +5351,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: score
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5187,10 +5432,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCup (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091335112012190880, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
+      propertyPath: _scoreSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 11c75c71844b06c49855d451582e1fac, type: 3}
     - target: {fileID: 5504416774910419687, guid: f98b8b2798645be43941172760dda529, type: 3}
       propertyPath: _scoreVfx
       value: 
-      objectReference: {fileID: 4938095755617958529, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      objectReference: {fileID: 6424076732465889602, guid: 0849ffb1bfc76e042a96dcb8aea8f92a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

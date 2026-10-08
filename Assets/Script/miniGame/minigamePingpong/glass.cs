@@ -35,5 +35,6 @@ public class glass : MonoBehaviour
             AddScore(ball.playerNumber);
             Destroy(other.gameObject);
         }
+       
     }
 }
