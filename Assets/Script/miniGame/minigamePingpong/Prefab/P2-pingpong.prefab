@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 1732689940393861421}
   - component: {fileID: -8029438617243902542}
   m_Layer: 0
-  m_Name: Pingpong 1
+  m_Name: P2-pingpong
   m_TagString: ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,6 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46365b4e2bf7da14895eb1476b7be0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallController
+  playerNumber: 2
+  _keyShoot: 273
+  _keyLeft: 276
+  _keyRight: 275
   _ballSpeed: 3
   _turnspeed: 50
   _powershoot: 5
@@ -273,3 +277,4 @@ MonoBehaviour:
   _ball: {fileID: 6367235978949624388}
   _wallLeft: {fileID: 912345978379176337, guid: bbadf8ecd6af9964095d943009388282, type: 3}
   _wallRight: {fileID: 2922664848034007794, guid: a9119aee45688d941b99ca829f970869, type: 3}
+  _SlideValue: {fileID: 0}

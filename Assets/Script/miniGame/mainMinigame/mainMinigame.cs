@@ -43,9 +43,27 @@ public class mainMinigame : MonoBehaviour
         p2TargetKeys = GetRoundKeys(p2Round);
     }
 
+    void OnEnable()
+    {
+        if (MinigameManager.Instance != null && (MinigameManager.Instance.P1buff > 0f || MinigameManager.Instance.P2buff > 0f))
+        {
+            buffTime = 10f;
+        }
+    }
+
     void Update()
     {
         if (isGameOver) return;
+
+        if (buffTime > 0f)
+        {
+            buffTime -= Time.deltaTime;
+            if (buffTime <= 0f && MinigameManager.Instance != null)
+            {
+                MinigameManager.Instance.P1buff = 0f;
+                MinigameManager.Instance.P2buff = 0f;
+            }
+        }
 
         player1Key();
         player2Key();
@@ -140,7 +158,8 @@ public class mainMinigame : MonoBehaviour
     {
         if (player == 1)
         {
-            if (p1Slider != null) p1Slider.value += 5f;
+            float bonus = (MinigameManager.Instance != null) ? MinigameManager.Instance.P1buff : 0f;
+            if (p1Slider != null) p1Slider.value += 5f + bonus;
             
             p1Round++;
             p1Index = 0;
@@ -148,7 +167,8 @@ public class mainMinigame : MonoBehaviour
         }
         else if (player == 2)
         {
-            if (p2Slider != null) p2Slider.value += 5f;
+            float bonus = (MinigameManager.Instance != null) ? MinigameManager.Instance.P2buff : 0f;
+            if (p2Slider != null) p2Slider.value += 5f + bonus;
 
             p2Round++;
             p2Index = 0;

@@ -16,11 +16,11 @@ public class BallController : MonoBehaviour
     [Header("obj set up")]
     [SerializeField] Transform _shootPoint;
     public GameObject _ball;
-    public GameObject _wallLeft;
-    public GameObject _wallRight;
-
-    [Header("UI set up")]
+ 
     public SliderController _SlideValue;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip _throwSfx;
 
     private int _clickCount = 0;
     private Rigidbody rb;
@@ -43,29 +43,46 @@ public class BallController : MonoBehaviour
     void Start()
     {
         lockpos = true;
+        rb.useGravity = false;
         startPos = transform.position;
+
         if (playerNumber == 2)
         {
             _keyShoot = KeyCode.UpArrow;
             _keyLeft = KeyCode.LeftArrow;
             _keyRight = KeyCode.RightArrow;
         }
+        else
+        {
+            _keyShoot = KeyCode.W;
+            _keyLeft = KeyCode.A;
+            _keyRight = KeyCode.D;
+        }
+
+        if (playerNumber == 1)
+        {
+            _SlideValue = GameFlow.Instance._slider1;
+        }
+        else if (playerNumber == 2)
+        {
+            _SlideValue = GameFlow.Instance._slider2;
+        }
+
         _SlideValue.UnEnable();
     }
 
     void Update()
     {
         freezepos();
-        freezerota();
 
         if (_clickCount == 0)
         {
             transform.position += Vector3.right * moveDir * _ballSpeed * Time.deltaTime;
-            if (transform.position.x > startPos.x + 2.2f)
+            if (transform.position.x > startPos.x + 1f)
             {
                 moveDir = -1f;
             }
-            else if (transform.position.x < startPos.x - 2.2f)
+            else if (transform.position.x < startPos.x - 1f)
             {
                 moveDir = 1f;
             }
@@ -77,7 +94,6 @@ public class BallController : MonoBehaviour
         }
         else if (_clickCount == 1)
         {
-            rb.useGravity = false;
             float horizontal = 0f;
             if (Input.GetKey(_keyLeft)) horizontal -= 1f;
             if (Input.GetKey(_keyRight)) horizontal += 1f;
@@ -89,9 +105,11 @@ public class BallController : MonoBehaviour
             if (Input.GetKeyDown(_keyShoot))
             {
                 lockpos = false;
+                rb.constraints = RigidbodyConstraints.None;
                 rb.useGravity = true;
                 Shoot();
                 _SlideValue.setzero();
+                _SlideValue.UnEnable();
                 _clickCount++;
             }
         }
@@ -101,7 +119,7 @@ public class BallController : MonoBehaviour
     {
         if (lockpos == true)
         {
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
         else if (lockpos == false)
         {
@@ -109,15 +127,16 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void freezerota()
-    {
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-    }
+
+    [HideInInspector] public bool hasScored = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("cup"))
+        if (other.CompareTag("cup") && !hasScored)
         {
+            hasScored = true;
+            glass g = other.GetComponentInParent<glass>();
+            g.AddScore(playerNumber);
             Destroy(gameObject);
         }
     }
@@ -125,9 +144,15 @@ public class BallController : MonoBehaviour
     void Shoot()
     {
         Rigidbody ballRb = _ball.GetComponent<Rigidbody>();
-        Vector3 forceToAdd = (transform.forward * _powershoot) + (Vector3.up * _SlideValue._powershootcurrent);
+        float upPower = _SlideValue._powershootcurrent;
+        Vector3 forceToAdd = (transform.forward * _powershoot) + (Vector3.up * upPower);
         ballRb.AddForce(forceToAdd, ForceMode.Impulse);
-        Destroy(gameObject, 3);
+        if (_throwSfx != null)
+        {
+            AudioSource.PlayClipAtPoint(_throwSfx, transform.position);
+        }
+        Destroy(gameObject, 5);
+        Debug.Log("hit");
         if (playerNumber == 1)
         {
             GameFlow.Instance.Ball1Deactive();

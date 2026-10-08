@@ -156,6 +156,11 @@ public class minigameCatch : MinigameBase
                 p2ResultText.gameObject.SetActive(true);
                 p1ResultText.text = "WIN";
                 p2ResultText.text = "LOSE";
+                if (MinigameManager.Instance != null)
+                {
+                    MinigameManager.Instance.P1buff = 5f;
+                    MinigameManager.Instance.P2buff = 0f;
+                }
             }
             else if (player2Score > player1Score)
             {
@@ -163,6 +168,11 @@ public class minigameCatch : MinigameBase
                 p2ResultText.gameObject.SetActive(true);
                 p1ResultText.text = "LOSE";
                 p2ResultText.text = "WIN";
+                if (MinigameManager.Instance != null)
+                {
+                    MinigameManager.Instance.P1buff = 0f;
+                    MinigameManager.Instance.P2buff = 5f;
+                }
             }
             else
             {
@@ -170,6 +180,11 @@ public class minigameCatch : MinigameBase
                 p2ResultText.gameObject.SetActive(true);
                 p1ResultText.text = "DRAW";
                 p2ResultText.text = "DRAW";
+                if (MinigameManager.Instance != null)
+                {
+                    MinigameManager.Instance.P1buff = 0f;
+                    MinigameManager.Instance.P2buff = 0f;
+                }
             }
         }
     }

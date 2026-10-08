@@ -5,7 +5,7 @@ public class MinigameBase : MonoBehaviour
    public void Result()
    {
       OverwritedResult();
-      MinigameManager.Instance.UpdateGameState();
+      if (MinigameManager.Instance != null) MinigameManager.Instance.UpdateGameState();
    }
 
    public virtual void OverwritedResult()

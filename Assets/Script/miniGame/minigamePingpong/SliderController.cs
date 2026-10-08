@@ -9,10 +9,11 @@ public class SliderController : MonoBehaviour
     [SerializeField] float _scalespeed = 1.25f;
 
     private bool _sclaeup = false;
-    private bool _DeActive = false;
+    private bool _DeActive = true;
 
     void Start()
     {
+        _DeActive = true;
         _slider = GetComponent<Slider>();
         _slider.maxValue = _powershootupmax;
         _slider.value = _powershootcurrent;

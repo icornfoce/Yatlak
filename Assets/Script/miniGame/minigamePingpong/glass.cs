@@ -3,30 +3,37 @@ using UnityEngine;
 
 
 public class glass : MonoBehaviour
-
-
 {
+    public int score = 1;
 
-enum player
+    [Header("VFX & SFX")]
+    [SerializeField] GameObject _scoreVfx;
+    [SerializeField] AudioClip _scoreSfx;
+
+    public void AddScore(int playerNumber)
     {
-        player1,
-        player2
+        GameFlow.Instance.AddScore(playerNumber, score);
+
+        if (_scoreVfx != null)
+        {
+            GameObject vfx = Instantiate(_scoreVfx, transform.position, Quaternion.identity);
+            Destroy(vfx, 3f);
+        }
+
+        if (_scoreSfx != null)
+        {
+            AudioSource.PlayClipAtPoint(_scoreSfx, transform.position);
+        }
     }
-    [SerializeField] int score;
-    [SerializeField] player _player;
 
     private void OnTriggerEnter(Collider other)
     {
-      if(other.gameObject.CompareTag("ball"))
+        BallController ball = other.GetComponent<BallController>();
+        if (!ball.hasScored)
         {
-            if(_player == player.player1)
-            {
-                GameFlow.Instance.score2+= score;
-            }
-            else
-            {
-                GameFlow.Instance.score1+= score;
-            }
+            ball.hasScored = true;
+            AddScore(ball.playerNumber);
+            Destroy(other.gameObject);
         }
     }
 }

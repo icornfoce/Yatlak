@@ -109,18 +109,33 @@ public class DartsManager : MinigameBase
         {
             resultTextP1.text = "WIN";
             resultTextP2.text = "LOSE";
+            if (MinigameManager.Instance != null)
+            {
+                MinigameManager.Instance.P1buff = 5f;
+                MinigameManager.Instance.P2buff = 0f;
+            }
         }
         else if (p2Score > p1Score)
         {
             resultTextP1.text = "LOSE";
             resultTextP2.text = "WIN";
+            if (MinigameManager.Instance != null)
+            {
+                MinigameManager.Instance.P1buff = 0f;
+                MinigameManager.Instance.P2buff = 5f;
+            }
         }
         else
         {
             resultTextP1.text = "DRAW";
             resultTextP2.text = "DRAW";
+            if (MinigameManager.Instance != null)
+            {
+                MinigameManager.Instance.P1buff = 0f;
+                MinigameManager.Instance.P2buff = 0f;
+            }
         }
-        MinigameManager.Instance.UpdateGameState(); 
+        if (MinigameManager.Instance != null) MinigameManager.Instance.UpdateGameState(); 
     }
 
     void ShowScore()
