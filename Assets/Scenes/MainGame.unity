@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &2463618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2897932417034569713, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
+  m_PrefabInstance: {fileID: 1868926227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &79939042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1592,14 @@ PrefabInstance:
       propertyPath: mainMinigame
       value: 
       objectReference: {fileID: 521455018}
+    - target: {fileID: 2061104778653230941, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
+      propertyPath: p1ResultText
+      value: 
+      objectReference: {fileID: 2463618}
+    - target: {fileID: 2061104778653230941, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
+      propertyPath: p2ResultText
+      value: 
+      objectReference: {fileID: 1976552051}
     - target: {fileID: 2288891853255595491, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
       propertyPath: m_Name
       value: minigame1
@@ -1699,6 +1718,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1976552051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7749463366056306927, guid: 5bad203c00f64c94292003dbf18299e2, type: 3}
+  m_PrefabInstance: {fileID: 1868926227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2109301035
 GameObject:
   m_ObjectHideFlags: 0
