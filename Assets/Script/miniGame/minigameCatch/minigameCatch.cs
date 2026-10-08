@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 
-public class minigameCatch : MonoBehaviour
+public class minigameCatch : MinigameBase
 {
     [SerializeField]
     public GameObject mainMinigame;
@@ -142,11 +142,11 @@ public class minigameCatch : MonoBehaviour
         if (timeLeft <= 0f)
         {
             isGameOver = true;
-            result();
+            Result();
         }
     }
 
-    void result()
+    public override void OverwritedResult()
     {
         if (isGameOver)
         {

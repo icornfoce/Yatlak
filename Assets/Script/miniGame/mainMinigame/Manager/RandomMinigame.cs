@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
 
 public class randomMinigame : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class randomMinigame : MonoBehaviour
     public Slider p1Slider;
     public Slider p2Slider;
 
-    private List<int> playedIndices = new List<int>();
+    private List<int> minigamePool = new List<int>();
 
     private bool hasTriggered25 = false;
     private bool hasTriggered50 = false;
@@ -19,10 +20,15 @@ public class randomMinigame : MonoBehaviour
     [SerializeField] 
     private GameObject mainMinigame;
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-            
+            for(int i = 0; i < minigame.Length; i++ )
+            {
+            minigamePool.Add(i);
+        }
     }
 
     // Update is called once per frame
@@ -53,15 +59,20 @@ public class randomMinigame : MonoBehaviour
 
     void RandomMinigame()
     {
-        int randomIndex;
-        
-        do
+        if(minigamePool.Count == 0)
         {
-            randomIndex = Random.Range(0, minigame.Length);
-        } 
-        while (playedIndices.Contains(randomIndex));
 
-        playedIndices.Add(randomIndex);
+            //game end
+            return;
+        }
+      
+         int   randomIndex = Random.Range(0, minigamePool.Count);
+
+
+
+        minigamePool.Remove(randomIndex);
+
+MinigameManager.Instance.setCurrentMiniGame(minigame[randomIndex]);
         minigame[randomIndex].SetActive(true);
     }
 }

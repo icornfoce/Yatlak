@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class DartsManager : MonoBehaviour
+public class DartsManager : MinigameBase
 {
     public int maxDarts = 3;     
     public float gameTime = 60f; 
@@ -54,7 +54,7 @@ public class DartsManager : MonoBehaviour
 
         if (timeLeft <= 0)
         {
-            EndGame();
+            Result();
         }
     }
 
@@ -88,7 +88,7 @@ public class DartsManager : MonoBehaviour
         ShowScore();
         if (p1DartsLeft <= 0 && p2DartsLeft <= 0)
         {
-            EndGame();
+            Result();
         }
     }
 
@@ -101,7 +101,7 @@ public class DartsManager : MonoBehaviour
         return p2DartsLeft;
     }
 
-    void EndGame()
+    public override void  OverwritedResult()
     {
         isPlaying = false;
 
@@ -120,6 +120,7 @@ public class DartsManager : MonoBehaviour
             resultTextP1.text = "DRAW";
             resultTextP2.text = "DRAW";
         }
+        MinigameManager.Instance.UpdateGameState(); 
     }
 
     void ShowScore()
