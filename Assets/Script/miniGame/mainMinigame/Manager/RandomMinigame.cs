@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using System.Linq;
 
 public class randomMinigame : MonoBehaviour
 {
@@ -20,54 +18,100 @@ public class randomMinigame : MonoBehaviour
     [SerializeField] 
     private GameObject mainMinigame;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-            for(int i = 0; i < minigame.Length; i++ )
+        InitializePool();
+    }
+
+    void InitializePool()
+    {
+        minigamePool.Clear();
+        if (minigame == null) return;
+
+        for (int i = 0; i < minigame.Length; i++)
+        {
+            if (minigame[i] != null)
             {
-            minigamePool.Add(i);
+                minigamePool.Add(i);
+            }
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (p1Slider == null || p2Slider == null) return;
+
+        if (mainMinigame != null && !mainMinigame.activeInHierarchy) return;
+
         float p1 = p1Slider.value;
         float p2 = p2Slider.value;
 
         if (!hasTriggered25 && (p1 >= 25 || p2 >= 25))
         {
-            RandomMinigame();
-            mainMinigame.SetActive(false);
             hasTriggered25 = true;
+            if (StartRandomMinigame() && mainMinigame != null)
+            {
+                mainMinigame.SetActive(false);
+            }
         }
         else if (!hasTriggered50 && (p1 >= 50 || p2 >= 50))
         {
-            RandomMinigame();
-            mainMinigame.SetActive(false);
             hasTriggered50 = true;
+            if (StartRandomMinigame() && mainMinigame != null)
+            {
+                mainMinigame.SetActive(false);
+            }
         }
         else if (!hasTriggered75 && (p1 >= 75 || p2 >= 75))
         {
-            RandomMinigame();
-            mainMinigame.SetActive(false);
             hasTriggered75 = true;
+            if (StartRandomMinigame() && mainMinigame != null)
+            {
+                mainMinigame.SetActive(false);
+            }
         }
     }
 
-    void RandomMinigame()
+    public bool StartRandomMinigame()
     {
-        if(minigamePool.Count == 0)
+        if (minigame == null || minigame.Length == 0)
         {
-            //game end
-            return;
+            return false;
         }
-      
-        int   randomIndex = Random.Range(0, minigamePool.Count);
 
-        minigamePool.Remove(randomIndex);
+        if (minigamePool.Count == 0)
+        {
+            InitializePool();
+            if (minigamePool.Count == 0) return false;
+        }
 
-        MinigameManager.Instance.setCurrentMiniGame(minigame[randomIndex]);
-        minigame[randomIndex].SetActive(true);
+        int poolIndex = Random.Range(0, minigamePool.Count);
+        int gameIndex = minigamePool[poolIndex];
+        minigamePool.RemoveAt(poolIndex);
+
+        GameObject selectedMinigame = minigame[gameIndex];
+        if (selectedMinigame == null) return false;
+
+        if (MinigameManager.Instance != null)
+        {
+            MinigameManager.Instance.setCurrentMiniGame(selectedMinigame);
+        }
+
+        selectedMinigame.SetActive(true);
+        return true;
+    }
+
+    public void RandomMinigame()
+    {
+        StartRandomMinigame();
+    }
+
+    public void ResetTriggers()
+    {
+        hasTriggered25 = false;
+        hasTriggered50 = false;
+        hasTriggered75 = false;
+        InitializePool();
     }
 }
+

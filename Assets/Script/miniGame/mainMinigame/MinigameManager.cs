@@ -24,7 +24,13 @@ public class MinigameManager : MonoBehaviour
 
     public void UpdateGameState()
     {
-        currentMinigame.gameObject.SetActive(false);
-        primaryMiniGame.SetActive(true);
+        if (currentMinigame != null)
+        {
+            currentMinigame.SetActive(false);
+        }
+        if (primaryMiniGame != null)
+        {
+            primaryMiniGame.SetActive(true);
+        }
     }
 }
