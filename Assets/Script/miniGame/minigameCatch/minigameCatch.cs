@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class minigameCatch : MinigameBase
 {
@@ -42,7 +43,26 @@ public class minigameCatch : MinigameBase
 
     private float time = 0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("SFX")]
+    public AudioClip catchSound;
+    public AudioClip gameOverSound;
+    private AudioSource audioSource2D;
+
+    [Header("VFX")]
+    public GameObject catchVfxPrefab;
+    public GameObject gameOverVfxPrefab;
+
+    private Vector3 catcher1InitialScale = Vector3.one;
+    private Vector3 catcher2InitialScale = Vector3.one;
+    private Vector3 p1ScoreInitialScale = Vector3.one;
+    private Vector3 p2ScoreInitialScale = Vector3.one;
+
+    void Awake()
+    {
+        audioSource2D = gameObject.AddComponent<AudioSource>();
+        audioSource2D.spatialBlend = 0f;
+    }
+
     public void Start()
     {
         minX1 = camera1.transform.position.x - 3.5f;
@@ -50,9 +70,13 @@ public class minigameCatch : MinigameBase
 
         minX2 = camera2.transform.position.x - 3.5f;
         maxX2 = camera2.transform.position.x + 3.5f;
+
+        if (Catcher1 != null) catcher1InitialScale = Catcher1.transform.localScale;
+        if (Catcher2 != null) catcher2InitialScale = Catcher2.transform.localScale;
+        if (p1ScoreText != null) p1ScoreInitialScale = p1ScoreText.transform.localScale;
+        if (p2ScoreText != null) p2ScoreInitialScale = p2ScoreText.transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
         spawnFruitBothSides();
@@ -73,7 +97,6 @@ public class minigameCatch : MinigameBase
             SpawnFruit(randomFruit, minX2, maxX2);
             time = 0f;
         }
-        
     }
 
     void SpawnFruit(GameObject fruit, float minX, float maxX)
@@ -89,13 +112,55 @@ public class minigameCatch : MinigameBase
 
     public void addScore(int playerNumber)
     {
+        addScore(playerNumber, default);
+    }
+
+    public void addScore(int playerNumber, Vector3 fruitPos)
+    {
         if (playerNumber == 1)
         {
             player1Score += 5;
+            TriggerCatchVFX(1, fruitPos);
         }
         else if (playerNumber == 2)
         {
             player2Score += 5;
+            TriggerCatchVFX(2, fruitPos);
+        }
+
+        PlaySound(catchSound);
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        if (audioSource2D != null && clip != null)
+        {
+            audioSource2D.PlayOneShot(clip);
+        }
+    }
+
+    void TriggerCatchVFX(int playerNumber, Vector3 fruitPos)
+    {
+        GameObject catcher = (playerNumber == 1) ? Catcher1 : Catcher2;
+        TextMeshProUGUI scoreText = (playerNumber == 1) ? p1ScoreText : p2ScoreText;
+        Vector3 scoreInitScale = (playerNumber == 1) ? p1ScoreInitialScale : p2ScoreInitialScale;
+        Vector3 basketInitScale = (playerNumber == 1) ? catcher1InitialScale : catcher2InitialScale;
+
+        if (catchVfxPrefab != null)
+        {
+            Vector3 spawnPoint = (fruitPos != default) ? fruitPos : (catcher != null ? catcher.transform.position : Vector3.zero);
+            GameObject vfx = Instantiate(catchVfxPrefab, spawnPoint, Quaternion.identity);
+            Destroy(vfx, 1.5f);
+        }
+
+        if (catcher != null)
+        {
+            StartCoroutine(BounceBasketCoroutine(catcher.transform, basketInitScale, 0.16f));
+        }
+
+        if (scoreText != null)
+        {
+            StartCoroutine(PunchScaleCoroutine(scoreText.transform, scoreInitScale, new Vector3(1.35f, 1.35f, 1f), 0.15f));
         }
     }
 
@@ -134,14 +199,21 @@ public class minigameCatch : MinigameBase
 
         p1ScoreText.text = player1Score.ToString();
         p2ScoreText.text = player2Score.ToString();
-
     }
 
     void checkGameOver()
     {
-        if (timeLeft <= 0f)
+        if (timeLeft <= 0f && !isGameOver)
         {
             isGameOver = true;
+            PlaySound(gameOverSound);
+
+            if (gameOverVfxPrefab != null)
+            {
+                GameObject vfx = Instantiate(gameOverVfxPrefab, Vector3.zero, Quaternion.identity);
+                Destroy(vfx, 2f);
+            }
+
             Result();
         }
     }
@@ -186,6 +258,42 @@ public class minigameCatch : MinigameBase
                     MinigameManager.Instance.P2buff = 0f;
                 }
             }
+
+            if (p1ResultText != null) StartCoroutine(PunchScaleCoroutine(p1ResultText.transform, Vector3.one, new Vector3(1.3f, 1.3f, 1f), 0.3f));
+            if (p2ResultText != null) StartCoroutine(PunchScaleCoroutine(p2ResultText.transform, Vector3.one, new Vector3(1.3f, 1.3f, 1f), 0.3f));
         }
+    }
+
+    IEnumerator BounceBasketCoroutine(Transform target, Vector3 baseScale, float duration)
+    {
+        if (target == null) yield break;
+        Vector3 squashed = new Vector3(baseScale.x * 1.3f, baseScale.y * 0.75f, baseScale.z);
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            if (target == null) yield break;
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            float curve = Mathf.Sin(t * Mathf.PI);
+            target.localScale = Vector3.Lerp(baseScale, squashed, curve);
+            yield return null;
+        }
+        if (target != null) target.localScale = baseScale;
+    }
+
+    IEnumerator PunchScaleCoroutine(Transform target, Vector3 baseScale, Vector3 targetScale, float duration)
+    {
+        if (target == null) yield break;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            if (target == null) yield break;
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            float curve = Mathf.Sin(t * Mathf.PI);
+            target.localScale = Vector3.Lerp(baseScale, targetScale, curve);
+            yield return null;
+        }
+        if (target != null) target.localScale = baseScale;
     }
 }

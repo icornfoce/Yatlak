@@ -4,16 +4,13 @@ public class Fruits : MonoBehaviour
 {
     public minigameCatch controller;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Destroy(this.gameObject, 4f);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Destroy(this.gameObject, 2f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,6 +29,9 @@ public class Fruits : MonoBehaviour
 
     void addScore(int playerNumber)
     {
-        controller.addScore(playerNumber);
+        if (controller != null)
+        {
+            controller.addScore(playerNumber, transform.position);
+        }
     }
 }
