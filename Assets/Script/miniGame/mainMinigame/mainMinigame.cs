@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
+using DG.Tweening;
 
 public enum DirectionKey
 {
@@ -61,6 +61,9 @@ public class mainMinigame : MonoBehaviour
     private Vector3 p1SliderInitialScale = Vector3.one;
     private Vector3 p2SliderInitialScale = Vector3.one;
 
+    private float p1SliderTarget = 0f;
+    private float p2SliderTarget = 0f;
+
     private float p1WrongTimer = 0f;
     private float p2WrongTimer = 0f;
 
@@ -82,12 +85,23 @@ public class mainMinigame : MonoBehaviour
             p2TextInitialPos = p2Text.rectTransform.anchoredPosition;
             p2TextInitialScale = p2Text.transform.localScale;
         }
-        if (p1Slider != null) p1SliderInitialScale = p1Slider.transform.localScale;
-        if (p2Slider != null) p2SliderInitialScale = p2Slider.transform.localScale;
+        if (p1Slider != null)
+        {
+            p1SliderInitialScale = p1Slider.transform.localScale;
+            p1SliderTarget = p1Slider.value;
+        }
+        if (p2Slider != null)
+        {
+            p2SliderInitialScale = p2Slider.transform.localScale;
+            p2SliderTarget = p2Slider.value;
+        }
     }
 
     void OnEnable()
     {
+        if (p1Slider != null) p1SliderTarget = p1Slider.value;
+        if (p2Slider != null) p2SliderTarget = p2Slider.value;
+
         if (MinigameManager.Instance != null && (MinigameManager.Instance.P1buff > 0f || MinigameManager.Instance.P2buff > 0f))
         {
             buffTime = 5f;
@@ -189,7 +203,12 @@ public class mainMinigame : MonoBehaviour
             {
                 p1Index++;
                 PlaySound(correctKeySound);
-                if (p1Text != null) StartCoroutine(PunchScaleCoroutine(p1Text.transform, p1TextInitialScale, new Vector3(1.12f, 1.12f, 1f), 0.08f));
+                if (p1Text != null)
+                {
+                    p1Text.transform.DOKill();
+                    p1Text.transform.localScale = p1TextInitialScale;
+                    p1Text.transform.DOPunchScale(Vector3.one * 0.12f, 0.08f, 4, 0.5f);
+                }
 
                 if (p1Index >= p1TargetKeys.Count)
                 {
@@ -201,7 +220,12 @@ public class mainMinigame : MonoBehaviour
                 p1Index = 0; 
                 p1WrongTimer = 0.22f;
                 PlaySound(wrongKeySound);
-                if (p1Text != null) StartCoroutine(ShakeRectCoroutine(p1Text.rectTransform, p1TextInitialPos, 0.2f, 14f));
+                if (p1Text != null)
+                {
+                    p1Text.rectTransform.DOKill();
+                    p1Text.rectTransform.anchoredPosition = p1TextInitialPos;
+                    p1Text.rectTransform.DOShakeAnchorPos(0.22f, new Vector2(16f, 0f), 18, 90f, false, true);
+                }
             }
         }
     }
@@ -228,7 +252,12 @@ public class mainMinigame : MonoBehaviour
             {
                 p2Index++;
                 PlaySound(correctKeySound);
-                if (p2Text != null) StartCoroutine(PunchScaleCoroutine(p2Text.transform, p2TextInitialScale, new Vector3(1.12f, 1.12f, 1f), 0.08f));
+                if (p2Text != null)
+                {
+                    p2Text.transform.DOKill();
+                    p2Text.transform.localScale = p2TextInitialScale;
+                    p2Text.transform.DOPunchScale(Vector3.one * 0.12f, 0.08f, 4, 0.5f);
+                }
 
                 if (p2Index >= p2TargetKeys.Count)
                 {
@@ -240,7 +269,12 @@ public class mainMinigame : MonoBehaviour
                 p2Index = 0; 
                 p2WrongTimer = 0.22f;
                 PlaySound(wrongKeySound);
-                if (p2Text != null) StartCoroutine(ShakeRectCoroutine(p2Text.rectTransform, p2TextInitialPos, 0.2f, 14f));
+                if (p2Text != null)
+                {
+                    p2Text.rectTransform.DOKill();
+                    p2Text.rectTransform.anchoredPosition = p2TextInitialPos;
+                    p2Text.rectTransform.DOShakeAnchorPos(0.22f, new Vector2(16f, 0f), 18, 90f, false, true);
+                }
             }
         }
     }
@@ -250,10 +284,20 @@ public class mainMinigame : MonoBehaviour
         if (player == 1)
         {
             float bonus = (MinigameManager.Instance != null) ? MinigameManager.Instance.P1buff : 0f;
+            p1SliderTarget = Mathf.Min(p1SliderTarget + 5f + bonus, 100f);
             if (p1Slider != null)
             {
-                p1Slider.value += 5f + bonus;
-                StartCoroutine(PunchScaleCoroutine(p1Slider.transform, p1SliderInitialScale, new Vector3(1.06f, 1.15f, 1f), 0.16f));
+                p1Slider.DOKill();
+                p1Slider.DOValue(p1SliderTarget, 0.2f).SetEase(Ease.OutQuad).OnUpdate(checkWin);
+                p1Slider.transform.DOKill();
+                p1Slider.transform.localScale = p1SliderInitialScale;
+                p1Slider.transform.DOPunchScale(new Vector3(0.08f, 0.15f, 0f), 0.2f, 5, 0.5f);
+            }
+            if (p1Text != null)
+            {
+                p1Text.transform.DOKill();
+                p1Text.transform.localScale = p1TextInitialScale;
+                p1Text.transform.DOPunchScale(Vector3.one * 0.25f, 0.2f, 5, 0.5f);
             }
             
             p1Round++;
@@ -266,10 +310,20 @@ public class mainMinigame : MonoBehaviour
         else if (player == 2)
         {
             float bonus = (MinigameManager.Instance != null) ? MinigameManager.Instance.P2buff : 0f;
+            p2SliderTarget = Mathf.Min(p2SliderTarget + 5f + bonus, 100f);
             if (p2Slider != null)
             {
-                p2Slider.value += 5f + bonus;
-                StartCoroutine(PunchScaleCoroutine(p2Slider.transform, p2SliderInitialScale, new Vector3(1.06f, 1.15f, 1f), 0.16f));
+                p2Slider.DOKill();
+                p2Slider.DOValue(p2SliderTarget, 0.2f).SetEase(Ease.OutQuad).OnUpdate(checkWin);
+                p2Slider.transform.DOKill();
+                p2Slider.transform.localScale = p2SliderInitialScale;
+                p2Slider.transform.DOPunchScale(new Vector3(0.08f, 0.15f, 0f), 0.2f, 5, 0.5f);
+            }
+            if (p2Text != null)
+            {
+                p2Text.transform.DOKill();
+                p2Text.transform.localScale = p2TextInitialScale;
+                p2Text.transform.DOPunchScale(Vector3.one * 0.25f, 0.2f, 5, 0.5f);
             }
 
             p2Round++;
@@ -352,39 +406,43 @@ public class mainMinigame : MonoBehaviour
 
     void checkWin()
     {
-        if (p1Slider != null && p1Slider.value >= 100f)
+        if (isGameOver) return;
+
+        if (p1Slider != null && (p1Slider.value >= 100f || p1SliderTarget >= 100f))
         {
-            if (p1ResultText != null)
-            {
-                p1ResultText.gameObject.SetActive(true);
-                p1ResultText.text = "WIN";
-                StartCoroutine(PunchScaleCoroutine(p1ResultText.transform, Vector3.one, new Vector3(1.4f, 1.4f, 1f), 0.35f));
-            }
-            if (p2ResultText != null)
-            {
-                p2ResultText.gameObject.SetActive(true);
-                p2ResultText.text = "LOSE";
-            }
             isGameOver = true;
+            AnimateResult(p1ResultText, "WIN", true);
+            AnimateResult(p2ResultText, "LOSE", false);
             PlaySound(winSound);
             TriggerWinVFX(1);
         }
-        else if (p2Slider != null && p2Slider.value >= 100f)
+        else if (p2Slider != null && (p2Slider.value >= 100f || p2SliderTarget >= 100f))
         {
-            if (p2ResultText != null)
-            {
-                p2ResultText.gameObject.SetActive(true);
-                p2ResultText.text = "WIN";
-                StartCoroutine(PunchScaleCoroutine(p2ResultText.transform, Vector3.one, new Vector3(1.4f, 1.4f, 1f), 0.35f));
-            }
-            if (p1ResultText != null)
-            {
-                p1ResultText.gameObject.SetActive(true);
-                p1ResultText.text = "LOSE";
-            }
             isGameOver = true;
+            AnimateResult(p2ResultText, "WIN", true);
+            AnimateResult(p1ResultText, "LOSE", false);
             PlaySound(winSound);
             TriggerWinVFX(2);
+        }
+    }
+
+    void AnimateResult(TextMeshProUGUI textComp, string message, bool isWinner)
+    {
+        if (textComp == null) return;
+        textComp.gameObject.SetActive(true);
+        textComp.text = message;
+        textComp.transform.DOKill();
+        textComp.transform.localScale = Vector3.zero;
+
+        if (isWinner)
+        {
+            textComp.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+            textComp.transform.DOPunchScale(Vector3.one * 0.2f, 0.4f, 4, 0.5f).SetDelay(0.5f);
+        }
+        else
+        {
+            textComp.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutQuad);
+            textComp.rectTransform.DOShakeAnchorPos(0.4f, new Vector2(10f, 0f), 15).SetDelay(0.4f);
         }
     }
 
@@ -442,34 +500,13 @@ public class mainMinigame : MonoBehaviour
         }
     }
 
-    IEnumerator ShakeRectCoroutine(RectTransform target, Vector2 basePos, float duration, float magnitude)
+    void OnDestroy()
     {
-        if (target == null) yield break;
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            if (target == null) yield break;
-            elapsed += Time.deltaTime;
-            float xOffset = Random.Range(-1f, 1f) * magnitude;
-            target.anchoredPosition = basePos + new Vector2(xOffset, 0f);
-            yield return null;
-        }
-        if (target != null) target.anchoredPosition = basePos;
-    }
-
-    IEnumerator PunchScaleCoroutine(Transform target, Vector3 baseScale, Vector3 targetScale, float duration)
-    {
-        if (target == null) yield break;
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            if (target == null) yield break;
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            float curve = Mathf.Sin(t * Mathf.PI);
-            target.localScale = Vector3.Lerp(baseScale, targetScale, curve);
-            yield return null;
-        }
-        if (target != null) target.localScale = baseScale;
+        if (p1Slider != null) p1Slider.DOKill();
+        if (p2Slider != null) p2Slider.DOKill();
+        if (p1Text != null) p1Text.transform.DOKill();
+        if (p2Text != null) p2Text.transform.DOKill();
+        if (p1ResultText != null) p1ResultText.transform.DOKill();
+        if (p2ResultText != null) p2ResultText.transform.DOKill();
     }
 }

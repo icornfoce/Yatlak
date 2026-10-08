@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-
+using DG.Tweening;
 
 public class DartsPlayer : MonoBehaviour
 {
@@ -65,6 +65,7 @@ public class DartsPlayer : MonoBehaviour
         crosshair.gameObject.SetActive(true);
         step = 1;
         statusText.text = "Lock X " + keyText;
+        PunchStatusText(0.15f);
     }
 
     void Update()
@@ -126,6 +127,7 @@ public class DartsPlayer : MonoBehaviour
                 direction = 1;
                 step = 2;
                 statusText.text = "Lock Y " + keyText;
+                PunchStatusText(0.2f);
             }
             else if (step == 2)
             {
@@ -178,6 +180,7 @@ public class DartsPlayer : MonoBehaviour
         {
             statusText.text = "MISS!";
         }
+        PunchStatusText(0.35f);
         manager.AddScore(playerNumber, points);
         Invoke("NextDart", 1f); 
     }
@@ -202,6 +205,7 @@ public class DartsPlayer : MonoBehaviour
     private void OnDestroy()
     {
         ClearDarts();
+        if (statusText != null) statusText.transform.DOKill();
     }
 
     void NextDart()
@@ -210,10 +214,21 @@ public class DartsPlayer : MonoBehaviour
         {
             step = 0;
             statusText.text = "Done!";
+            PunchStatusText(0.2f);
             crosshair.gameObject.SetActive(false); 
             return;
         }
         StartAiming();
+    }
+
+    void PunchStatusText(float intensity)
+    {
+        if (statusText != null)
+        {
+            statusText.transform.DOKill();
+            statusText.transform.localScale = Vector3.one;
+            statusText.transform.DOPunchScale(Vector3.one * intensity, 0.2f, 5, 0.5f);
+        }
     }
 
     void PlaySound(AudioClip sound)

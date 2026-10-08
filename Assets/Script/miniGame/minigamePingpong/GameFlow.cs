@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class GameFlow : MinigameBase
 {
@@ -29,10 +30,22 @@ public class GameFlow : MinigameBase
         if (player == 1)
         {
             score1 += amount;
+            if (_scoreText1 != null)
+            {
+                _scoreText1.transform.DOKill();
+                _scoreText1.transform.localScale = Vector3.one;
+                _scoreText1.transform.DOPunchScale(Vector3.one * 0.35f, 0.2f, 5, 0.5f);
+            }
         }
         else if (player == 2)
         {
             score2 += amount;
+            if (_scoreText2 != null)
+            {
+                _scoreText2.transform.DOKill();
+                _scoreText2.transform.localScale = Vector3.one;
+                _scoreText2.transform.DOPunchScale(Vector3.one * 0.35f, 0.2f, 5, 0.5f);
+            }
         }
     }
 
@@ -94,14 +107,10 @@ public class GameFlow : MinigameBase
 
     public override void OverwritedResult()
     {
-        
-
         if (score1 > score2)
         {
-            p1ResultText.gameObject.SetActive(true);
-            p2ResultText.gameObject.SetActive(true);
-            p1ResultText.text = "WIN";
-            p2ResultText.text = "LOSE";
+            AnimateResult(p1ResultText, "WIN", true, false);
+            AnimateResult(p2ResultText, "LOSE", false, false);
             if (MinigameManager.Instance != null)
             {
                 MinigameManager.Instance.P1buff = 5f;
@@ -110,10 +119,8 @@ public class GameFlow : MinigameBase
         }
         else if (score2 > score1)
         {
-            p1ResultText.gameObject.SetActive(true);
-            p2ResultText.gameObject.SetActive(true);
-            p1ResultText.text = "LOSE";
-            p2ResultText.text = "WIN";
+            AnimateResult(p1ResultText, "LOSE", false, false);
+            AnimateResult(p2ResultText, "WIN", true, false);
             if (MinigameManager.Instance != null)
             {
                 MinigameManager.Instance.P1buff = 0f;
@@ -122,15 +129,37 @@ public class GameFlow : MinigameBase
         }
         else
         {
-            p1ResultText.gameObject.SetActive(true);
-            p2ResultText.gameObject.SetActive(true);
-            p1ResultText.text = "DRAW";
-            p2ResultText.text = "DRAW";
+            AnimateResult(p1ResultText, "DRAW", false, true);
+            AnimateResult(p2ResultText, "DRAW", false, true);
             if (MinigameManager.Instance != null)
             {
                 MinigameManager.Instance.P1buff = 0f;
                 MinigameManager.Instance.P2buff = 0f;
             }
+        }
+    }
+
+    void AnimateResult(TextMeshProUGUI textComp, string message, bool isWinner, bool isDraw)
+    {
+        if (textComp == null) return;
+        textComp.gameObject.SetActive(true);
+        textComp.text = message;
+        textComp.transform.DOKill();
+        textComp.transform.localScale = Vector3.zero;
+
+        if (isDraw)
+        {
+            textComp.transform.DOScale(Vector3.one, 0.45f).SetEase(Ease.OutBounce);
+        }
+        else if (isWinner)
+        {
+            textComp.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+            textComp.transform.DOPunchScale(Vector3.one * 0.2f, 0.4f, 4, 0.5f).SetDelay(0.5f);
+        }
+        else
+        {
+            textComp.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutQuad);
+            textComp.rectTransform.DOShakeAnchorPos(0.4f, new Vector2(10f, 0f), 15).SetDelay(0.4f);
         }
     }
 
@@ -142,6 +171,13 @@ public class GameFlow : MinigameBase
         bc._SlideValue = _slider1;
         _ballAmount--;
         _isBallActive = true;
+
+        if (_ballLeftText1 != null)
+        {
+            _ballLeftText1.transform.DOKill();
+            _ballLeftText1.transform.localScale = Vector3.one;
+            _ballLeftText1.transform.DOPunchScale(Vector3.one * 0.2f, 0.15f, 4, 0.5f);
+        }
     }
 
     private void InstantiateBall2()
@@ -152,6 +188,13 @@ public class GameFlow : MinigameBase
         bc._SlideValue = _slider2;
         _ballAmount2--;
         _isBallActive2 = true;
+
+        if (_ballLeftText2 != null)
+        {
+            _ballLeftText2.transform.DOKill();
+            _ballLeftText2.transform.localScale = Vector3.one;
+            _ballLeftText2.transform.DOPunchScale(Vector3.one * 0.2f, 0.15f, 4, 0.5f);
+        }
     }
 
     public void Ball1Deactive()
@@ -173,4 +216,14 @@ public class GameFlow : MinigameBase
     {
         _isBallActive = false;
     }
-}
+
+    void OnDestroy()
+    {
+        if (_scoreText1 != null) _scoreText1.transform.DOKill();
+        if (_scoreText2 != null) _scoreText2.transform.DOKill();
+        if (_ballLeftText1 != null) _ballLeftText1.transform.DOKill();
+        if (_ballLeftText2 != null) _ballLeftText2.transform.DOKill();
+        if (p1ResultText != null) p1ResultText.transform.DOKill();
+        if (p2ResultText != null) p2ResultText.transform.DOKill();
+    }
+}

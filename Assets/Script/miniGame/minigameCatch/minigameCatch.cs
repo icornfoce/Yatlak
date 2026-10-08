@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
+using DG.Tweening;
 
 public class minigameCatch : MinigameBase
 {
@@ -56,6 +56,8 @@ public class minigameCatch : MinigameBase
     private Vector3 catcher2InitialScale = Vector3.one;
     private Vector3 p1ScoreInitialScale = Vector3.one;
     private Vector3 p2ScoreInitialScale = Vector3.one;
+    private Vector3 timerInitialScale = Vector3.one;
+    private int lastTimerSecond = -1;
 
     void Awake()
     {
@@ -75,6 +77,7 @@ public class minigameCatch : MinigameBase
         if (Catcher2 != null) catcher2InitialScale = Catcher2.transform.localScale;
         if (p1ScoreText != null) p1ScoreInitialScale = p1ScoreText.transform.localScale;
         if (p2ScoreText != null) p2ScoreInitialScale = p2ScoreText.transform.localScale;
+        if (TimerText != null) timerInitialScale = TimerText.transform.localScale;
     }
 
     void Update()
@@ -157,12 +160,16 @@ public class minigameCatch : MinigameBase
 
         if (catcher != null)
         {
-            StartCoroutine(BounceBasketCoroutine(catcher.transform, basketInitScale, 0.16f));
+            catcher.transform.DOKill();
+            catcher.transform.localScale = basketInitScale;
+            catcher.transform.DOPunchScale(new Vector3(basketInitScale.x * 0.35f, -basketInitScale.y * 0.25f, 0f), 0.18f, 5, 0.5f);
         }
 
         if (scoreText != null)
         {
-            StartCoroutine(PunchScaleCoroutine(scoreText.transform, scoreInitScale, new Vector3(1.35f, 1.35f, 1f), 0.15f));
+            scoreText.transform.DOKill();
+            scoreText.transform.localScale = scoreInitScale;
+            scoreText.transform.DOPunchScale(Vector3.one * 0.35f, 0.18f, 5, 0.5f);
         }
     }
 
@@ -197,10 +204,24 @@ public class minigameCatch : MinigameBase
     void UI()
     {
         timeLeft -= Time.deltaTime;
+        if (timeLeft < 0f) timeLeft = 0f;
         TimerText.text = timeLeft.ToString("F0");
 
         p1ScoreText.text = player1Score.ToString();
         p2ScoreText.text = player2Score.ToString();
+
+        int currentSec = Mathf.CeilToInt(timeLeft);
+        if (currentSec != lastTimerSecond && currentSec <= 5 && currentSec > 0 && !isGameOver)
+        {
+            lastTimerSecond = currentSec;
+            if (TimerText != null)
+            {
+                TimerText.transform.DOKill();
+                TimerText.transform.localScale = timerInitialScale;
+                TimerText.transform.DOPunchScale(Vector3.one * 0.35f, 0.25f, 5, 0.5f);
+                TimerText.color = Color.red;
+            }
+        }
     }
 
     void checkGameOver()
@@ -226,10 +247,8 @@ public class minigameCatch : MinigameBase
         {
             if (player1Score > player2Score)
             {
-                p1ResultText.gameObject.SetActive(true);
-                p2ResultText.gameObject.SetActive(true);
-                p1ResultText.text = "WIN";
-                p2ResultText.text = "LOSE";
+                AnimateResult(p1ResultText, "WIN", true, false);
+                AnimateResult(p2ResultText, "LOSE", false, false);
                 if (MinigameManager.Instance != null)
                 {
                     MinigameManager.Instance.P1buff = 5f;
@@ -238,10 +257,8 @@ public class minigameCatch : MinigameBase
             }
             else if (player2Score > player1Score)
             {
-                p1ResultText.gameObject.SetActive(true);
-                p2ResultText.gameObject.SetActive(true);
-                p1ResultText.text = "LOSE";
-                p2ResultText.text = "WIN";
+                AnimateResult(p1ResultText, "LOSE", false, false);
+                AnimateResult(p2ResultText, "WIN", true, false);
                 if (MinigameManager.Instance != null)
                 {
                     MinigameManager.Instance.P1buff = 0f;
@@ -250,52 +267,49 @@ public class minigameCatch : MinigameBase
             }
             else
             {
-                p1ResultText.gameObject.SetActive(true);
-                p2ResultText.gameObject.SetActive(true);
-                p1ResultText.text = "DRAW";
-                p2ResultText.text = "DRAW";
+                AnimateResult(p1ResultText, "DRAW", false, true);
+                AnimateResult(p2ResultText, "DRAW", false, true);
                 if (MinigameManager.Instance != null)
                 {
                     MinigameManager.Instance.P1buff = 0f;
                     MinigameManager.Instance.P2buff = 0f;
                 }
             }
-
-            if (p1ResultText != null) StartCoroutine(PunchScaleCoroutine(p1ResultText.transform, Vector3.one, new Vector3(1.3f, 1.3f, 1f), 0.3f));
-            if (p2ResultText != null) StartCoroutine(PunchScaleCoroutine(p2ResultText.transform, Vector3.one, new Vector3(1.3f, 1.3f, 1f), 0.3f));
         }
     }
 
-    IEnumerator BounceBasketCoroutine(Transform target, Vector3 baseScale, float duration)
+    void AnimateResult(TextMeshProUGUI textComp, string message, bool isWinner, bool isDraw)
     {
-        if (target == null) yield break;
-        Vector3 squashed = new Vector3(baseScale.x * 1.3f, baseScale.y * 0.75f, baseScale.z);
-        float elapsed = 0f;
-        while (elapsed < duration)
+        if (textComp == null) return;
+        textComp.gameObject.SetActive(true);
+        textComp.text = message;
+        textComp.transform.DOKill();
+        textComp.transform.localScale = Vector3.zero;
+
+        if (isDraw)
         {
-            if (target == null) yield break;
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            float curve = Mathf.Sin(t * Mathf.PI);
-            target.localScale = Vector3.Lerp(baseScale, squashed, curve);
-            yield return null;
+            textComp.transform.DOScale(Vector3.one, 0.45f).SetEase(Ease.OutBounce);
         }
-        if (target != null) target.localScale = baseScale;
+        else if (isWinner)
+        {
+            textComp.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+            textComp.transform.DOPunchScale(Vector3.one * 0.2f, 0.4f, 4, 0.5f).SetDelay(0.5f);
+        }
+        else
+        {
+            textComp.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutQuad);
+            textComp.rectTransform.DOShakeAnchorPos(0.4f, new Vector2(10f, 0f), 15).SetDelay(0.4f);
+        }
     }
 
-    IEnumerator PunchScaleCoroutine(Transform target, Vector3 baseScale, Vector3 targetScale, float duration)
+    void OnDestroy()
     {
-        if (target == null) yield break;
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            if (target == null) yield break;
-            elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            float curve = Mathf.Sin(t * Mathf.PI);
-            target.localScale = Vector3.Lerp(baseScale, targetScale, curve);
-            yield return null;
-        }
-        if (target != null) target.localScale = baseScale;
+        if (Catcher1 != null) Catcher1.transform.DOKill();
+        if (Catcher2 != null) Catcher2.transform.DOKill();
+        if (p1ScoreText != null) p1ScoreText.transform.DOKill();
+        if (p2ScoreText != null) p2ScoreText.transform.DOKill();
+        if (TimerText != null) TimerText.transform.DOKill();
+        if (p1ResultText != null) p1ResultText.transform.DOKill();
+        if (p2ResultText != null) p2ResultText.transform.DOKill();
     }
 }
