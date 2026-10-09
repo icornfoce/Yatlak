@@ -721,6 +721,10 @@ PrefabInstance:
       propertyPath: m_Lightmapping
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -1153155913723802138, guid: ba0cea84b7102f14893c36bc7e6c7ade, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b273b58f2764134e95f47ed78771de8, type: 2}
     - target: {fileID: 129213395593917309, guid: ba0cea84b7102f14893c36bc7e6c7ade, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
