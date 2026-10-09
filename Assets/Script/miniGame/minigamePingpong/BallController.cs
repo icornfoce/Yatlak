@@ -106,11 +106,11 @@ public class BallController : MonoBehaviour
             {
                 if (playerNumber == 1)
                 {
-                    statusText.text = " [Press W to lock MoveMent] ";
+                    statusText.text = " [Press W] ";
                 }
                 else if (playerNumber == 2)
                 {
-                    statusText.text = " [Press Arrow Up to lock MoveMent] ";
+                    statusText.text = " [Press ↑] ";
                 }
             }
             transform.position += Vector3.right * moveDir * _ballSpeed * Time.deltaTime;
@@ -132,11 +132,11 @@ public class BallController : MonoBehaviour
         {
             if (playerNumber == 1)
             {
-                statusText.text = " [Press A, D to move and W to shoot] ";
+                statusText.text = " [A] [D] to move [W] to shoot ";
             }
             else if (playerNumber == 2)
             {
-                statusText.text = " [Press Arrow Right, Arrow Left to move and Arrow Up to shoot] ";
+                statusText.text = " [←] [→] to move [↑] to shoot ";
             }
             if (guideshoot != null) guideshoot.SetActive(true);
             float horizontal = 0f;
