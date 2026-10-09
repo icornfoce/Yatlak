@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;   
 
 public class GameFlow : MinigameBase
 {
@@ -24,6 +25,10 @@ public class GameFlow : MinigameBase
     public int score1;
     public int score2;
     private bool isGameOver = false;
+    public TextMeshProUGUI timerText;
+    
+
+
 
     public void AddScore(int player, int amount)
     {
@@ -64,6 +69,7 @@ public class GameFlow : MinigameBase
 
     void Start()
     {
+        
         _isBallActive = false;
         _isBallActive2 = false;
 
@@ -96,6 +102,7 @@ public class GameFlow : MinigameBase
         checkGameOver();
     }
 
+    
     void checkGameOver()
     {
         if (!isGameOver && _ballAmount <= 0 && !_isBallActive && _ballAmount2 <= 0 && !_isBallActive2)
@@ -226,4 +233,4 @@ public class GameFlow : MinigameBase
         if (p1ResultText != null) p1ResultText.transform.DOKill();
         if (p2ResultText != null) p2ResultText.transform.DOKill();
     }
-}
+}
