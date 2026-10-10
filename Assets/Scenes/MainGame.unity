@@ -1461,10 +1461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 298888995398719070, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
     - target: {fileID: 317780330254425459, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1505,94 +1501,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 379550675558779878, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 613787731987969332, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1110012941628825969, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 1254200986591177273, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 2007818040116636137, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215584305970101742, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
+    - target: {fileID: 4067011315718547454, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2251633065441257884, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 2810163589945238189, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 3112416513615602027, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 3713148324746200951, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
+    - target: {fileID: 6845127337046414077, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5585912016641181490, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 5966306598518084047, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 6699712902177363713, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6699712902177363713, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6801364985136778927, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 6841878252673551353, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 7060296628381856291, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7423877823027992372, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 7732754404949532076, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 7748252481152205815, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 8107381761223307660, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 8450374749482101087, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
     - target: {fileID: 8553018571938520894, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
       propertyPath: m_Name
       value: Minigame3
@@ -1601,14 +1517,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8984183017282451302, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
-    - target: {fileID: 9022814537643053495, guid: 0aeecabbc4b510548b5f54d3165629ca, type: 3}
-      propertyPath: _scoreSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 66c811d017f08884a98fdbc13f012a9f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
